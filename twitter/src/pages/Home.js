@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import {UserContext} from '../context/context'
+import {UserContext} from '../context/context';
+import { BsTwitter } from "react-icons/bs";
+
 
 const Home = () =>{
 
@@ -8,14 +10,26 @@ const Home = () =>{
     const [feed, setFeed] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/feed/?page=${page}&page_size=10&sort=date:desc`)
+        fetch(`http://localhost:5000/feed/`)
         .then(response => response.json())
         .then(data => setFeed(m =>[...data, ...feed]))
-    }, [page,id])
+        .then (console.log(feed))
+    })
 
     return (
-        <Container>
-            
-        </Container>
+        <div class ="ontainer-fluid p-0">
+            <div class ="row">
+                <div class ="col-3 mt-3 bg-primary">
+                    <BsTwitter 
+                        color="rgb(29, 155, 240)" 
+                        fontSize="2em"
+                    />
+                </div>
+                <div class ="col-6 bg-danger" ><p>twitter is zee best</p></div>
+                <div class="col-3 bg-primary"></div>
+            </div>
+        </div>
     )
 }
+
+export default Home
