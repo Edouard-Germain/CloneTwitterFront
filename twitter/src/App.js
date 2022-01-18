@@ -10,7 +10,7 @@ function App() {
           <Route path ='/'></Route>
           <Route path ='/users/:id'></Route>
           <Route path ='/login'></Route>
-          <Route path ='/tweet/:id'></Route>
+          <Route path ='/:username/:id'></Route>
         </Routes>
       </BrowserRouter>
     </UserContextProvider>
