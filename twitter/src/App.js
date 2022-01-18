@@ -7,10 +7,10 @@ function App() {
     <UserContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route path ='/'></Route>
-          <Route path ='/users/:id'></Route>
+          <Route path ='/home'></Route>
+          <Route path ='/:username'></Route>
           <Route path ='/login'></Route>
-          <Route path ='/tweet/:id'></Route>
+          <Route path ='/:username/:id'></Route>
         </Routes>
       </BrowserRouter>
     </UserContextProvider>
