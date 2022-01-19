@@ -2,6 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from '../context/context'
 import styled from "styled-components";
 
+import { 
+    ButtonBlue,
+    ButtonWhite 
+} from "../styles/Button";
+
 import { BsTwitter } from "react-icons/bs";
 
 const ImgContainer = styled.div`
@@ -30,21 +35,9 @@ const ConditionText = styled.p`
 const Form = styled.form`
     width: 300px;
 `
-const Button = styled.div`
-    background-color: ${props => props.backgroundColor};
-    border: ${props => props.border};
-    cursor: pointer;
-    height: 40px;
-    margin-bottom: 5px;
-    padding-top: 7px;
-    border-radius: 90px;
-    text-align: center;
-    color: ${props => props.color};
-    font-weight: bold;
-`
+
 
 const Login = () =>{
-    const { userName, setUserName } = useContext(UserContext)
 
     return (
         <div class="container-fluid p-0">
@@ -53,8 +46,8 @@ const Login = () =>{
                     <ImgContainer>
                         <BsTwitter 
                             color="rgb(255, 255, 255)" 
-                            fontSize="25em"
-                            style={{ margin: "10vh 10vh"}}
+                            fontSize="20em"
+                            style={{ margin: "15vh 15vh"}}
                         />
                     </ImgContainer>
                 </div>
@@ -67,26 +60,12 @@ const Login = () =>{
                         <H1Text>Ça se passe <br/> maintenant</H1Text>
                         <H3Text>Rejoignez Twitter dès aujourd'hui.</H3Text>
                         <Form>
-                            <Button 
-                                role="link"
-                                color="white"
-                                backgroundColor="rgb(29, 155, 240)"
-                                border="none"
-                            >
-                                <span>S'inscrire</span>
-                            </Button>
+                            <ButtonBlue><span>S'inscrire</span></ButtonBlue> 
                             <ConditionText>En vous inscrivant, vous acceptez les Conditions d'Utilisation et la Politique de Confidentialité, incluant l'Utilisation de Cookies.</ConditionText>
                             <div class="mt-5">
                                 <p class="fs-6 fw-bold">Vous avez déjà un compte ?</p>
-                                <Button role="link"
-                                    color="rgb(29, 155, 240)"
-                                    backgroundColor="rgb(255, 255, 255)"
-                                    border="1px solid rgb(207, 217, 222)"
-                                >
-                                    <span>S'inscrire</span>
-                                </Button>
-                            </div>
-                            
+                                <ButtonWhite><span>Se connecter</span></ButtonWhite> 
+                            </div>                     
                         </Form>
                     </div>
                 </div>
