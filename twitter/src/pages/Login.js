@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 // import { UserContext } from '../context/context'
 import styled from "styled-components";
 import ModalLogin from "../components/ModalLogin";
-// import ModalSignup from "../components/ModalSignup";
+import ModalSignup from "../components/ModalSignup";
 
 import { 
     ButtonBlue,
@@ -37,10 +37,13 @@ const Form = styled.form`
 
 
 const Login = () =>{
-    const [show, setShow] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
+    const handleCloseSignup= () => setShowSignup(false);
+    const handleShowSignup = () => setShowSignup(true);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showLogin, setShowLogin] = useState(false);
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
 
     return (
         <div className="container-fluid p-0">
@@ -67,19 +70,26 @@ const Login = () =>{
                                 type="button"
                                 data-bs-toggle="modal"
                                 data-bs-target="#loginModal"
-                            ><span>S'inscrire</span></ButtonBlue> 
+                                onClick={handleShowSignup}
+                            >
+                                <span>S'inscrire</span>
+                            </ButtonBlue>
+                            <ModalSignup
+                                show={showSignup}
+                                handleClose={handleCloseSignup}
+                            /> 
                             <ConditionText>En vous inscrivant, vous acceptez les Conditions d'Utilisation et la Politique de Confidentialité, incluant l'Utilisation de Cookies.</ConditionText>
                             <div className="mt-5">
                                 <p className="fs-6 fw-bold">Vous avez déjà un compte ?</p>
                                 <ButtonWhite
                                     type="button" 
-                                    onClick={handleShow}
+                                    onClick={handleShowLogin}
                                 >
                                     <span>Se connecter</span>
                                 </ButtonWhite> 
                                 <ModalLogin
-                                    show={show}
-                                    handleClose={handleClose}
+                                    show={showLogin}
+                                    handleClose={handleCloseLogin}
                                 />
                             </div>                     
                         </Form>

@@ -28,7 +28,7 @@ const ErrorText = styled.p`
     padding-left: 10px;
 `
 
-const ModalLogin = (props) => {
+const ModalSignup = (props) => {
     const navigate = useNavigate()
     const { user, setUser } = useContext(UserContext)
     const [ validated, setValidated ] = useState(false)
@@ -92,7 +92,7 @@ const ModalLogin = (props) => {
                   />
                 </div>
                 </ModalHeader>
-                <ModalTitle className="mt-4 text-center">Se connecter</ModalTitle>
+                <ModalTitle className="mt-4 text-center">S'inscrire</ModalTitle>
                 <Form 
                   onSubmit={formik.handleSubmit} 
                   validated={validated}
@@ -147,4 +147,4 @@ const ModalLogin = (props) => {
         </>
     )
 }
-export default ModalLogin
+export default ModalSignup
