@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from '../context/context'
+// import { UserContext } from '../context/context'
 import styled from "styled-components";
+import ModalLogin from "../components/ModalLogin";
+// import ModalSignup from "../components/ModalSignup";
 
 import { 
     ButtonBlue,
@@ -15,9 +17,6 @@ const ImgContainer = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-`
-const Img = styled.img`
-    padding: 32px;
 `
 const H1Text = styled.h1`
     font-size: 8vh;
@@ -38,11 +37,15 @@ const Form = styled.form`
 
 
 const Login = () =>{
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
-        <div class="container-fluid p-0">
-            <div class="row">
-                <div class="col-md-5">
+        <div className="container-fluid p-0">
+            <div className="row">
+                <div className="col-md-5">
                     <ImgContainer>
                         <BsTwitter 
                             color="rgb(255, 255, 255)" 
@@ -51,8 +54,8 @@ const Login = () =>{
                         />
                     </ImgContainer>
                 </div>
-                <div class="col-md-7">
-                    <div class="my-5 mx-2">
+                <div className="col-md-7">
+                    <div className="my-5 mx-2">
                         <BsTwitter 
                             color="rgb(29, 155, 240)" 
                             fontSize="2.5em"
@@ -60,11 +63,24 @@ const Login = () =>{
                         <H1Text>Ça se passe <br/> maintenant</H1Text>
                         <H3Text>Rejoignez Twitter dès aujourd'hui.</H3Text>
                         <Form>
-                            <ButtonBlue><span>S'inscrire</span></ButtonBlue> 
+                            <ButtonBlue
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#loginModal"
+                            ><span>S'inscrire</span></ButtonBlue> 
                             <ConditionText>En vous inscrivant, vous acceptez les Conditions d'Utilisation et la Politique de Confidentialité, incluant l'Utilisation de Cookies.</ConditionText>
-                            <div class="mt-5">
-                                <p class="fs-6 fw-bold">Vous avez déjà un compte ?</p>
-                                <ButtonWhite><span>Se connecter</span></ButtonWhite> 
+                            <div className="mt-5">
+                                <p className="fs-6 fw-bold">Vous avez déjà un compte ?</p>
+                                <ButtonWhite
+                                    type="button" 
+                                    onClick={handleShow}
+                                >
+                                    <span>Se connecter</span>
+                                </ButtonWhite> 
+                                <ModalLogin
+                                    show={show}
+                                    handleClose={handleClose}
+                                />
                             </div>                     
                         </Form>
                     </div>

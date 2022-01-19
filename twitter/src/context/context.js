@@ -2,11 +2,11 @@ import { createContext, useState } from "react"
 
 const UserContext = createContext({})
 const UserContextProvider = props => {
-const [userName, setUserName] = useState(null)
+const [ user, setUser ] = useState(null)
 
 const value = {
-    userName,
-    setUserName
+    user,
+    setUser
 }
 
       return (
