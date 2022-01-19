@@ -1,7 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import {UserContext} from '../context/context';
 import { BsTwitter } from "react-icons/bs";
+import SideNav from "../components/sideNav";
+import {BiHomeSmile} from 'react-icons/bi'
+import {FiUser} from 'react-icons/fi'
+import {FiUsers} from 'react-icons/fi'
+import {IoIosLogOut} from 'react-icons/io'
+import styled from "styled-components";
 
+
+const ButtonBlue = styled.div`
+    background-color: rgb(29, 155, 240);
+    border: none;
+    cursor: pointer;
+    width: 300px;
+`
 
 const Home = () =>{
 
@@ -21,11 +34,8 @@ const Home = () =>{
         <div class ="container-fluid p-0">
             <div class ="row">
                 <div class ="col-4 pl-3 mt-3 bg-primary">
-                    <BsTwitter 
-                        color="rgb(29, 155, 240)" 
-                        fontSize="2em"
-                    />
-                </div>
+                    <SideNav/>
+              </div>
                 <div class ="col-8 bg-danger " >
                     <p>twitter is zee best</p>
                     <button onClick ={handleTest}></button>
