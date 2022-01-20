@@ -18,6 +18,12 @@ const Home = () =>{
         .then(response => response.json())
         .then(data => setFeed(m =>[...data, ...feed]))
     }, [])
+
+    const Refresh = () => {
+        fetch(`http://localhost:5000/feed/`)
+        .then(response => response.json())
+        .then(data => setFeed(m =>[...data, ...feed]))
+    }
     console.log('feed',feed)
     return (
         <div className ="container-fluid p-0">
@@ -30,10 +36,10 @@ const Home = () =>{
               </div>
                 <div className ="col-9  " >
                     <div className="row">
-                        <div className="col-8">
+                        <div className="col-6">
                             <CreateTweet/>
                             {feed.map((tweet)=>
-                                <Tweet props = {tweet}></Tweet>
+                                <Tweet refresh ={Refresh} props = {tweet}></Tweet>
                             )}
                         </div>
                         <div className="col-4 bg-primary">
