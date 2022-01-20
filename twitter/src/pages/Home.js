@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import {UserContext} from '../context/context';
-
 import styled from "styled-components";
 
 import TopBar from "../components/TopBar"
 import SideNav from "../components/SideNav";
 // import CreateTweet  from "../components/createTweet";
 import CardFollowings  from "../components/CardFollowings";
-import ResearchBar  from "../components/ResearchBar";
+// import ResearchBar  from "../components/ResearchBar";
+// import Logout from "../components/logout"
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
 
@@ -19,9 +19,15 @@ const CentralContainer = styled.div`
 
 const Home = () =>{
 
-    const { user } = useContext(UserContext)
-    const [ page, setPage ] = useState(1)
-    const [ feed, setFeed ] = useState([])
+    const { 
+        user, 
+        feed,
+        setFeed, 
+        page, 
+        setPage 
+    } = useContext(UserContext)
+
+    
     const handleTest =()=>{
         console.log("test", feed)
     }

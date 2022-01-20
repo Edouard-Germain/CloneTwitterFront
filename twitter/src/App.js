@@ -11,16 +11,16 @@ import Home from "./pages/Home"
 
 function App() {
   return (
-    <UserContextProvider>
       <BrowserRouter>
+        <UserContextProvider>
           <Routes>
-              <Route path ='/home' element ={<Home/>}/>
-              <Route path ='/:username'/>
-              <Route path ='/login' element={<Login />}/>
-              <Route path ='/:username/:id'/>
+            <Route path ='/home' element ={<Home/>}/>
+            <Route path ='/:username'/>
+            <Route path ='/login' element={<Login />}/>
+            <Route path ='/:username/:id'/>
           </Routes>
+        </UserContextProvider>
       </BrowserRouter>
-    </UserContextProvider>
   );
 }
 

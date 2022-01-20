@@ -1,15 +1,20 @@
-import {BiHomeSmile} from 'react-icons/bi'
-import {FiUser} from 'react-icons/fi'
-import {FiUsers} from 'react-icons/fi'
-import {IoIosLogOut} from 'react-icons/io'
-import { BsTwitter } from "react-icons/bs";
+import {Link } from 'react-router-dom'
+import { useContext,useState } from 'react';
+import {UserContext} from '../context/context';
 
 import styled from "styled-components";
 import { 
     ButtonBlue,
 } from "../styles/Button";
 
-import ButtonProfil from "./ButtonProfil"
+import ButtonProfile from "./ButtonProfile";
+
+import {BiHomeSmile} from 'react-icons/bi'
+import {FiUser} from 'react-icons/fi'
+import {FiUsers} from 'react-icons/fi'
+import {IoIosLogOut} from 'react-icons/io'
+import { BsTwitter } from "react-icons/bs";
+
 
 const Container = styled.div`
     display: flex;
@@ -34,40 +39,53 @@ const Text = styled.div`
 `
 
 const SideNav = ()=>{
-
+    const {user} = useContext(UserContext)
+    
     return (
         <Container>
             <div>
+            
                 <BsTwitter
                     style={{
                         fontSize : "2.5em",
                         color : "rgb(29, 155, 240)"
                     }}
                 />
-                <Logocontainer>
-                    <BiHomeSmile
-                        style = {{
-                            fontSize : "1.8em",
-                        }} 
-                    />
-                    <Text>Accueil</Text>
-                </Logocontainer>
-                <Logocontainer>
-                    <FiUser
-                        style = {{
-                            fontSize : "1.8em",
-                        }}
-                    />
-                    <Text>Profil</Text>
-                </Logocontainer>     
-                <Logocontainer>
-                    <FiUsers
-                        style = {{
-                            fontSize : "1.8em",
-                        }}
-                    />
-                    <Text>Utilisateurs</Text>
-                </Logocontainer>
+
+                <Link style={{textDecoration:"none" }} to ={'/home'}>
+                    <Logocontainer>
+                        <BiHomeSmile
+                            style = {{
+                                fontSize : "1.8em",
+                            }} 
+                        />
+                        <Text>Accueil</Text>
+                    </Logocontainer>
+                </Link>
+                
+                <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                    <Logocontainer>
+                        <FiUser
+                            style = {{
+                                fontSize : "1.8em",
+                            }}
+                        />
+                        <Text>Profil</Text>
+                    </Logocontainer> 
+                </Link>    
+                
+                <Link style={{textDecoration:"none"}} to = {'/:username'}>
+                    <Logocontainer>
+                        <FiUsers
+                            style = {{
+                                fontSize : "1.8em",
+                            }}
+                        />
+                        <Text>Utilisateurs</Text>
+                    </Logocontainer>
+                </Link>
+
+                <Link style={{textDecoration:"none"}} to={'/login'}> 
                 <Logocontainer>
                     <IoIosLogOut
                         style = {{
@@ -76,12 +94,18 @@ const SideNav = ()=>{
                     />
                     <Text>Logout</Text>
                 </Logocontainer> 
+                </Link>
+
                 <div className="mt-4">
                     <ButtonBlue>Tweet</ButtonBlue>
                 </div>
             </div>
-            <ButtonProfil/>
+            <ButtonProfile/>
+
         </Container>
+            
+        
     )
 }
+
 export default SideNav
