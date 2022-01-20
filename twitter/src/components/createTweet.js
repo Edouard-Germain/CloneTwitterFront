@@ -1,10 +1,22 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
 
+
+
+
 const CreateTweet = () => {
     const formik = useFormik({
         initialValues: {
             content: ""
+          },
+          onSubmit: values =>{
+            fetch("http://localhost:5000/tweets/",{
+                method: 'post',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify(values)
+            })
+            .then(response=>response.json())
+            .then(data=>data)
           },
           validationSchema: Yup.object().shape({
 			content: Yup.string()
@@ -14,9 +26,9 @@ const CreateTweet = () => {
     })
     return( 
         <div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div className = "form-group">
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Quoi de neuf ?"/>
+                <input type="text" className="form-control" id="formGroupExampleInput"  placeholder="Quoi de neuf ?"/>
 
                 </div>
             </form>
