@@ -4,7 +4,7 @@ import {UserContext} from '../context/context';
 import styled from "styled-components";
 
 import Logout from "../components/logout"
-import SideNav from "../components/sideNav";
+import SideNav from "../components/SideNav";
 // import CreateTweet  from "../components/createTweet";
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";

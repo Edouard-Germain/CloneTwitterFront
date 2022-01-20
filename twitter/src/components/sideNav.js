@@ -6,25 +6,17 @@ import { BsTwitter } from "react-icons/bs";
 
 import styled from "styled-components";
 
+// import { 
+//     ButtonBlue,
+// } from "../styles/Button";
+
 const Container = styled.div`
     display : flex;
     flex-direction : column;
     padding-left : 120px;
     row-gap : 20px;
-    `
-const ButtonBlue = styled.div`
-    color : white; 
-    background-color: rgb(29, 155, 240);
-    padding-top : 10px;
-    padding-bottom: 10px;
-    margin-left : -30px;
-    border: none;
-    border-radius : 30px;
-    cursor: pointer;
-    width: 200px;
-    display: flex;
-    justify-content : center;
-    `
+`
+
 const Logocontainer = styled.div`
     display : flex;
     column-gap: 20px;
@@ -35,7 +27,7 @@ const Text = styled.div`
     font-weight : 400;
     `
 
-const sideNav = ()=>{
+const SideNav = ()=>{
 
     return (
         <Container>
@@ -83,8 +75,8 @@ const sideNav = ()=>{
                 />
                 <Text>Logout</Text>
             </Logocontainer>
-                <ButtonBlue> tweeter</ButtonBlue>
+            
         </Container>
     )
 }
-export default sideNav
+export default SideNav

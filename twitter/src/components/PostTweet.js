@@ -99,7 +99,7 @@ const PostTweet = (props) => {
           </FormGroup>
         </div>
             <div className="d-flex justify-content-end">
-              <div className="col-3">
+              <div className="col-2">
                 <ButtonBlue  
                   className="my-3" 
                   type='submit'
