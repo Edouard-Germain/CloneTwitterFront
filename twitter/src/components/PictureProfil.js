@@ -3,7 +3,7 @@ import {UserContext} from '../context/context';
 import styled from "styled-components";
 
 const PicContainer = styled.div`
-   
+    ${props => props.picture &&}
     border-radius : 50px;
     height : 60px;
     width : 60px;

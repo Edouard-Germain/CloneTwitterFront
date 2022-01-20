@@ -3,14 +3,18 @@ import {UserContext} from '../context/context';
 
 import styled from "styled-components";
 
-import Logout from "../components/logout"
+import TopBar from "../components/TopBar"
 import SideNav from "../components/SideNav";
 // import CreateTweet  from "../components/createTweet";
+import CardFollowings  from "../components/CardFollowings";
+import ResearchBar  from "../components/ResearchBar";
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
 
+
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
+    border-bottom: none;
 `
 
 const Home = () =>{
@@ -28,27 +32,31 @@ const Home = () =>{
     }, [])
     console.log('feed',feed)
     
-    return (
+    return (    
         <div className="container-fluid">
             <div className="row">
-                <div className ="col-3 mt-3  flex-column">
+                <div className ="col-3 mt-4">
                     <SideNav/>
-                    <div style = {{alignSelf : "end"}}>
-                        <Logout />
-                    </div>
-              </div>
-                <CentralContainer className="col-9">
-                    <div className="row">
-                        <div className="col-8 p-0">
+                </div>
+                <CentralContainer className="col-5 m-0">
+                    <TopBar
+                        title={"Home"}
+                    />
+                    <div className="row mt-3">
+                        <div className="col-8 m-0">
                             <PostTweet/>
                             {feed.map((tweet)=>
                                 <Tweet props = {tweet}></Tweet>
                             )}
                         </div>
-                        <div className="col-4 bg-primary">
-                        </div>
                     </div>
                 </CentralContainer>
+                <div className="col-4">
+                    <div className="mx-3">
+                        {/* <ResearchBar/> */}
+                        <CardFollowings/>
+                    </div>
+                </div>
             </div>
         </div>
     )
