@@ -3,8 +3,7 @@ import {BiTrash} from "react-icons/bi"
 
 const TweetContainer = styled.div`
     display : flex;
-    border-bottom: solid;
-    border-color: #d8d8d8;
+    border-bottom: 1px solid rgb(239, 243, 244);
 `
 
 const PicContainer = styled.div`
@@ -14,7 +13,7 @@ const PicContainer = styled.div`
     width : 60px;
 `
 
-const TextCointainer = styled.div`
+const TextContainer = styled.div`
 `
 
 const IconContainer = styled.div`
@@ -25,13 +24,13 @@ const Tweet = (props) =>{
         <TweetContainer>
             <PicContainer>           
             </PicContainer>
-            <TextCointainer>
+            <TextContainer>
                 <p> @coucou <span><BiTrash/></span></p> 
                 <p>{props.props.content}</p>
                 <IconContainer>
                     
                 </IconContainer>
-            </TextCointainer>
+            </TextContainer>
             
         </TweetContainer>
     )

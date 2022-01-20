@@ -1,12 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import {UserContext} from '../context/context';
-import SideNav from "../components/sideNav";
+
 import styled from "styled-components";
+
 import Logout from "../components/logout"
-import CreateTweet  from "../components/createTweet";
+import SideNav from "../components/sideNav";
+// import CreateTweet  from "../components/createTweet";
 import Tweet from "../components/tweet";
+import PostTweet from "../components/PostTweet";
 
-
+const CentralContainer = styled.div`
+    border: 1px solid rgb(239, 243, 244);
+`
 
 const Home = () =>{
 
@@ -24,18 +29,18 @@ const Home = () =>{
     console.log('feed',feed)
     
     return (
-        <div className ="container-fluid p-0">
-            <div className ="row">
+        <div className="container-fluid">
+            <div className="row">
                 <div className ="col-3 mt-3  flex-column">
                     <SideNav/>
                     <div style = {{alignSelf : "end"}}>
                         <Logout />
                     </div>
               </div>
-                <div className ="col-9  " >
+                <CentralContainer className="col-9">
                     <div className="row">
-                        <div className="col-8">
-                            <CreateTweet/>
+                        <div className="col-8 p-0">
+                            <PostTweet/>
                             {feed.map((tweet)=>
                                 <Tweet props = {tweet}></Tweet>
                             )}
@@ -43,7 +48,7 @@ const Home = () =>{
                         <div className="col-4 bg-primary">
                         </div>
                     </div>
-                </div>
+                </CentralContainer>
             </div>
         </div>
     )

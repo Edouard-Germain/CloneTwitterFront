@@ -56,7 +56,7 @@ const sideNav = ()=>{
                             }}
                     
                 />
-             <Text>Acceuil</Text>
+             <Text>Accueil</Text>
 
             </Logocontainer>
             <Logocontainer>
@@ -65,7 +65,7 @@ const sideNav = ()=>{
                     marginBottom : "4px"
                   }}
                 />
-                <Text>Profile</Text>
+                <Text>Profil</Text>
             </Logocontainer>
             <Logocontainer>
                 <FiUsers
