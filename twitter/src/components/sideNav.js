@@ -3,8 +3,10 @@ import {FiUser} from 'react-icons/fi'
 import {FiUsers} from 'react-icons/fi'
 import {IoIosLogOut} from 'react-icons/io'
 import { BsTwitter } from "react-icons/bs";
-
+import {Link } from 'react-router-dom'
 import styled from "styled-components";
+import {UserContext} from '../context/context';
+import { useContext,useState } from 'react';
 
 const Container = styled.div`
     display : flex;
@@ -35,8 +37,8 @@ const Text = styled.div`
     font-weight : 400;
     `
 
-const sideNav = ()=>{
-
+const SideNav = ()=>{
+const {user} = useContext(UserContext)
     return (
         <Container>
 
@@ -48,43 +50,50 @@ const sideNav = ()=>{
                     }}
 
             />
+            <Link style={{textDecoration:"none" }} to ={'/home'}>
+                <Logocontainer>
+                    <BiHomeSmile
+                        style = {{fontSize : "1.8em",
+                                marginBottom : "4px"
+                                }}
+                        
+                    />
+                <Text>Accueil</Text>
 
-            <Logocontainer>
-                <BiHomeSmile
-                    style = {{fontSize : "1.8em",
-                              marginBottom : "4px"
-                            }}
-                    
-                />
-             <Text>Acceuil</Text>
-
-            </Logocontainer>
-            <Logocontainer>
-                <FiUser
-                    style = {{fontSize : "1.8em",
-                    marginBottom : "4px"
-                  }}
-                />
-                <Text>Profile</Text>
-            </Logocontainer>
-            <Logocontainer>
-                <FiUsers
-                    style = {{fontSize : "1.8em",
-                    marginBottom : "4px"
-                  }}
-                />
-                <Text>Utilisateurs</Text>
-            </Logocontainer>
-            <Logocontainer>
-                <IoIosLogOut
-                    style = {{fontSize : "1.8em",
-                    marginBottom : "4px"
-                  }}
-                />
-                <Text>Logout</Text>
-            </Logocontainer>
+                </Logocontainer>
+            </Link>
+            <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                <Logocontainer>
+                    <FiUser
+                        style = {{fontSize : "1.8em",
+                        marginBottom : "4px"
+                    }}
+                    />
+                    <Text>Profil</Text>
+                </Logocontainer>
+            </Link>
+            <Link style={{textDecoration:"none"}} to = {'/:username'}>
+                <Logocontainer>
+                    <FiUsers
+                        style = {{fontSize : "1.8em",
+                        marginBottom : "4px"
+                    }}
+                    />
+                    <Text>Utilisateurs</Text>
+                </Logocontainer>
+            </Link>
+            <Link style={{textDecoration:"none"}} to={'/login'}>
+                <Logocontainer>
+                    <IoIosLogOut
+                        style = {{fontSize : "1.8em",
+                        marginBottom : "4px"
+                    }}
+                    />
+                    <Text>Logout</Text>
+                </Logocontainer>
+            </Link>
                 <ButtonBlue> tweeter</ButtonBlue>
         </Container>
     )
 }
-export default sideNav
+export default SideNav
