@@ -30,7 +30,7 @@ const FormGroup = styled.div`
 const InputTweet = styled.input`
   border: none;
   width: 100%;
-  padding-top: 1.5em;
+  margin-top: 1.5em;
 
   ::placeholder {
     color: ;
