@@ -18,6 +18,7 @@ const Home = () =>{
         .then(response => response.json())
         .then(data => setFeed(m =>[...data, ...feed]))
     }, [])
+    console.log('feed',feed)
     return (
         <div className ="container-fluid p-0">
             <div className ="row">

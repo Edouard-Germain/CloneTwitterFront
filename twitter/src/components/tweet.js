@@ -25,10 +25,8 @@ const Tweet = (props) =>{
             <PicContainer>           
             </PicContainer>
             <TextCointainer>
-                <p>{props.content}</p>
-                {/* <p>@{props.user.username}</p> */}
-                <BiTrash
-                />
+                <p> @coucou <span><BiTrash/></span></p> 
+                <p>{props.props.content}</p>
                 <IconContainer>
                     
                 </IconContainer>
