@@ -36,7 +36,13 @@ const ModalSignup = (props) => {
     const formik = useFormik({
         initialValues: {
           email: "",
-          password: ""
+          password: "",
+          passwordConfirmation: "",
+          username:"",
+          name:"",
+          picture:"",
+          bio:"",
+          website:"",
         },
         onSubmit: values => {
           login(values)
@@ -44,14 +50,18 @@ const ModalSignup = (props) => {
         validateOnChange: false,
         validationSchema: Yup.object({
           email: Yup.string()
-            .required("Une adresse email est requise"),
+            .required("Une adresse email est requise."),
           password: Yup.string()
-            .required("Un mot de passe est requis")
+            .required("Un mot de passe est requis."),
+          passwordConfirmation: Yup.string()
+          .required("Veuillez confirmer votre mot de passe."),
+          username: Yup.string()
+          .required("Un nom d'utilisateur est requis."),
         })
     })
 
     const login = async values => {
-        const response = await fetch('http://localhost:5000/auth/login', {
+        const response = await fetch('http://localhost:5000/auth/signup', {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
@@ -129,9 +139,52 @@ const ModalSignup = (props) => {
                       />
                       {!validated && 
                       <Form.Control.Feedback type="invalid">
-                          Mot de passe invalide
+                          Mot de passe non valide
                       </Form.Control.Feedback>
                       }
+                    </FormGroup>
+                    <FormGroup
+                      controlId="passwordConfirmationInput"
+                    >
+                      <FormControl
+                        type="password" 
+                        name='passwordConfirmation'
+                        className="mt-5 mb-1" 
+                        placeholder="Confirmez votre mot de passe"
+                        value={formik.values.passwordConfirmation}
+                        onChange={formik.handleChange}
+                        isInvalid={formik.errors.passwordConfirmation}
+                        isValid={validated}
+                      />
+                    </FormGroup>
+                    
+                    <FormGroup
+                      controlId="usernameInput"
+                    >
+                      <FormControl
+                        type="text" 
+                        name='username'
+                        className="mt-5 mb-1" 
+                        placeholder="Nom d'utilisateur"
+                        value={formik.values.username}
+                        onChange={formik.handleChange}
+                        isInvalid={formik.errors.username}
+                        isValid={validated}
+                      />
+                    </FormGroup>
+                    <FormGroup
+                      controlId="pictureFileInput"
+                    >
+                      <FormControl
+                        type="file"
+                        name='pictureUrl'
+                        className="mt-5 mb-1" 
+                        placeholder="Photo de profil"
+                        value={formik.values.picture}
+                        onChange={formik.handleChange}
+                        // isInvalid={formik.errors.p}
+                        // isValid={validated}
+                      />
                     </FormGroup>
                   </ModalBody>
                   <ModalFooter className="mt-5">
