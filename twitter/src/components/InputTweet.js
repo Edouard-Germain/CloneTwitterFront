@@ -13,6 +13,13 @@ import {
     ButtonBlue,
 } from "../styles/Button";
 
+const PicContainer = styled.div`
+    background-color : blue;
+    border-radius : 50px;
+    height : 60px;
+    width : 60px;
+`
+
 const InputTweet = (props) => {
     const { user, setUser } = useContext(UserContext)
     const [ validated, setValidated ] = useState(false)
@@ -59,13 +66,7 @@ const InputTweet = (props) => {
                   onSubmit={formik.handleSubmit} 
                   validated={validated}
                 >
-                  <ButtonBlue  
-                      className="my-3" 
-                      type='submit'
-                    >
-                        Tweet
-                  </ButtonBlue>
-                  
+                  <PicContainer/>
                   <FormGroup
                     controlId="tweetInput"
                   >

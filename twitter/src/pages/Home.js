@@ -1,20 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import {UserContext} from '../context/context';
-import { BsTwitter } from "react-icons/bs";
 import SideNav from "../components/sideNav";
-import {BiHomeSmile} from 'react-icons/bi'
-import {FiUser} from 'react-icons/fi'
-import {FiUsers} from 'react-icons/fi'
-import {IoIosLogOut} from 'react-icons/io'
 import styled from "styled-components";
+import Logout from "../components/logout"
+import CreateTweet  from "../components/createTweet";
+import Tweet from "../components/tweet";
 
 
-const ButtonBlue = styled.div`
-    background-color: rgb(29, 155, 240);
-    border: none;
-    cursor: pointer;
-    width: 300px;
-`
 
 const Home = () =>{
 
@@ -28,19 +20,29 @@ const Home = () =>{
         fetch(`http://localhost:5000/feed/`)
         .then(response => response.json())
         .then(data => setFeed(m =>[...data, ...feed]))
-        // .then(data=>setFeed(data))
-    })
-    console.log("test", user)
-
+    }, [])
+    console.log('feed',feed)
+    
     return (
-        <div class ="container-fluid p-0">
-            <div class ="row">
-                <div class ="col-4 pl-3 mt-3 bg-primary">
+        <div className ="container-fluid p-0">
+            <div className ="row">
+                <div className ="col-3 mt-3  flex-column">
                     <SideNav/>
+                    <div style = {{alignSelf : "end"}}>
+                        <Logout />
+                    </div>
               </div>
-                <div class ="col-8 bg-danger " >
-                    <p>twitter is zee best</p>
-                    <button onClick ={handleTest}></button>
+                <div className ="col-9  " >
+                    <div className="row">
+                        <div className="col-8">
+                            <CreateTweet/>
+                            {feed.map((tweet)=>
+                                <Tweet props = {tweet}></Tweet>
+                            )}
+                        </div>
+                        <div className="col-4 bg-primary">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
