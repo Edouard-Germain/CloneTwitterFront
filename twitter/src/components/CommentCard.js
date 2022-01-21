@@ -1,7 +1,9 @@
 import styled  from "styled-components"
+
 import {BiTrash} from "react-icons/bi"
 import {AiOutlineRetweet} from "react-icons/ai"
 import {FaRegComment} from "react-icons/fa"
+
 import moment from "moment"
 import { useContext } from "react"
 import {UserContext} from '../context/context';
@@ -38,10 +40,9 @@ const IconContainer = styled.div`
 const TextContainer = styled.div`
 `
 
-const Tweet = (props) =>{
-    const { feed, setFeed } = useContext(UserContext)
-    let retweet = props.props.retweets.length
-    let comment = props.props.comments.length
+
+const TweetCard = (props) =>{
+    const { setFeed } = useContext(UserContext)
     let id = props.props._id
     let time =  moment(props.props.createdat).format('DD/MM/YY')
 
@@ -58,30 +59,22 @@ const Tweet = (props) =>{
             console.log(err)
         }
     }
+    console.log("props",props)
 
     return (
-        <Link style={{textDecoration:"none"}} to={`/tweet/${id}`} >
             <TweetContainer>
-                <div className="d-flex">
                     <PicContainer>           
                     </PicContainer>
                     <TextContainer>
                         <UserText> {props.props.user.username} 
                             <UserAt>@{props.props.user.username} {time}</UserAt>
+                            <TrashSpan onClick = {HandleDelete}>
+                                <BiTrash/>
+                            </TrashSpan>
                         </UserText> 
                         <p>{props.props.content}</p>
-                        <IconContainer>
-                                <p>{comment}</p><FaRegComment/>
-                                <p>{retweet}</p> <AiOutlineRetweet/>      
-                        </IconContainer>
                     </TextContainer>
-                </div>
-                <TrashSpan onClick = {HandleDelete}>
-                    <BiTrash/>
-                </TrashSpan>
             </TweetContainer>
-        </Link>
     )
-
 }
-export default Tweet
+export default TweetCard

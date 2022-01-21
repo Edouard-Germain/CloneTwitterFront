@@ -12,6 +12,7 @@ import ResearchBar  from "../components/ResearchBar";
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
 import { BsTypeH1 } from 'react-icons/bs';
+import TweetCard from "../components/TweetCard";
 
 
 const CentralContainer = styled.div`
@@ -68,7 +69,7 @@ const Home = () =>{
                                 getFeed={getFeed}
                             />
                             {feed.length > 0 && feed.map((tweet)=>
-                                <Tweet props = {tweet}></Tweet>
+                                <TweetCard props = {tweet}></TweetCard>
                             )}
                         </TweetsContainer>
                     </div>

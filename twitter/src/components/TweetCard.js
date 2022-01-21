@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled  from "styled-components"
 import {BiTrash} from "react-icons/bi"
 import {AiOutlineRetweet} from "react-icons/ai"
@@ -38,7 +39,7 @@ const IconContainer = styled.div`
 const TextContainer = styled.div`
 `
 
-const Tweet = (props) =>{
+const TweetCard = (props) =>{
     const { feed, setFeed } = useContext(UserContext)
     let retweet = props.props.retweets.length
     let comment = props.props.comments.length
@@ -84,4 +85,4 @@ const Tweet = (props) =>{
     )
 
 }
-export default Tweet
+export default TweetCard

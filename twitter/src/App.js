@@ -4,6 +4,7 @@ import { UserContextProvider } from './context/context'
 import Login from "./pages/Login";
 import Home from "./pages/Home"
 import User from "./pages/User"
+import Tweet from "./pages/Tweet"
 
 
 
@@ -16,6 +17,7 @@ function App() {
             <Route path ='/:username' element= {<User/>}/>
             <Route path ='/login' element={<Login />}/>
             <Route path ='/:username/:id'/>
+            <Route path ='/tweet/:id' element ={<Tweet/>}/>
           </Routes>
         </UserContextProvider>
       </BrowserRouter>
