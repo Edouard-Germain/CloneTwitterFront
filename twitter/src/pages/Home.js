@@ -22,6 +22,8 @@ const TweetsContainer = styled.div`
 `
 
 const Home = () =>{
+ 
+    console.log('user',user)
 
     const { 
         user, 

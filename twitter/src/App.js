@@ -3,6 +3,7 @@ import { UserContextProvider } from './context/context'
 
 import Login from "./pages/Login";
 import Home from "./pages/Home"
+import User from "./pages/User"
 
 
 
@@ -12,7 +13,7 @@ function App() {
         <UserContextProvider>
           <Routes>
             <Route path ='/home' element ={<Home/>}/>
-            <Route path ='/:username'/>
+            <Route path ='/:username' element= {<User/>}/>
             <Route path ='/login' element={<Login />}/>
             <Route path ='/:username/:id'/>
           </Routes>

@@ -38,32 +38,35 @@ const Text = styled.div`
 `
 
 const SideNav = ()=>{
-    const {user} = useContext(UserContext)
-    
+const {user} = useContext(UserContext)
+const isConnected = user ==! null
+
     return (
+        <>
         <Container>
             <div>
-            
                 <BsTwitter
                     style={{
-                        fontSize : "2.5em",
-                        color : "rgb(29, 155, 240)"
+                        fontSize: "2.5em",
+                        color: "rgb(29, 155, 240)"
                     }}
                 />
-
-                <Link style={{textDecoration:"none" }} to ={'/home'}>
+                <Link 
+                    style={{
+                        textDecoration:"none" 
+                    }} 
+                    to={'/home'}>
                     <Logocontainer>
                         <BiHomeSmile
                             style = {{
-                                fontSize : "1.8em",
+                                fontSize: "1.8em",
                             }} 
                         />
                         <Text>Accueil</Text>
                     </Logocontainer>
                 </Link>
-                
                 {/* <Link style={{textDecoration:"none"}} to = {`/${user.username}`} > */}
-                    <Logocontainer>
+                <Logocontainer>
                         <FiUser
                             style = {{
                                 fontSize : "1.8em",
@@ -72,9 +75,8 @@ const SideNav = ()=>{
                         <Text>Profil</Text>
                     </Logocontainer> 
                 {/* </Link>     */}
-                
                 {/* <Link style={{textDecoration:"none"}} to = {'/:username'}> */}
-                    <Logocontainer>
+                <Logocontainer>
                         <FiUsers
                             style = {{
                                 fontSize : "1.8em",
@@ -83,27 +85,44 @@ const SideNav = ()=>{
                         <Text>Utilisateurs</Text>
                     </Logocontainer>
                 {/* </Link> */}
-
-                <Link style={{textDecoration:"none"}} to={'/login'}> 
-                <Logocontainer>
-                    <IoIosLogOut
-                        style = {{
-                            fontSize : "1.8em",
+                <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                    <Logocontainer>
+                        <FiUser
+                            style = {{fontSize : "1.8em",
+                            marginBottom : "4px"
                         }}
-                    />
-                    <Text>Logout</Text>
-                </Logocontainer> 
+                        />
+                        <Text>Profil</Text>
+                    </Logocontainer>
                 </Link>
-
+                <Link style={{textDecoration:"none"}} to = {'/:username'}>
+                    <Logocontainer>
+                        <FiUsers
+                            style = {{fontSize : "1.8em",
+                            marginBottom : "4px"
+                        }}
+                        />
+                        <Text>Utilisateurs</Text>
+                    </Logocontainer>
+                </Link>
+                <Link style={{textDecoration:"none"}} to={'/login'}>
+                    <Logocontainer>
+                        <IoIosLogOut
+                            style = {{
+                                fontSize : "1.8em",
+                            }}
+                        />
+                        <Text>Logout</Text>
+                    </Logocontainer> 
+                </Link>
                 <div className="mt-4">
                     <ButtonBlue>Tweet</ButtonBlue>
                 </div>
+            
             </div>
             <ButtonProfile/>
-
         </Container>
-            
-        
+        </>  
     )
 }
 
