@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 import Logout from "../components/logout"
 import SideNav from "../components/SideNav";
-import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
+import TweetCard from "../components/TweetCard";
 
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
@@ -22,7 +22,6 @@ const User = () =>{
         .then(response => response.json())
         .then(data => setUserTweet(data))
       }, [])
-      console.log("usertweet", userTweet)
     if (userTweet=== null){
         return null
     }
@@ -42,7 +41,7 @@ const User = () =>{
                         <div className="col-8 p-0">
                             <PostTweet/>
                             {userTweet.map((tweet)=>
-                                <Tweet props = {tweet}></Tweet>
+                                <TweetCard props = {tweet}></TweetCard>
                             )}
                         </div>
                         <div className="col-4 bg-primary">
