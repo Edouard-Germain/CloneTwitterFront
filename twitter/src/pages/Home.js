@@ -6,7 +6,7 @@ import TopBar from "../components/TopBar"
 import SideNav from "../components/SideNav";
 // import CreateTweet  from "../components/createTweet";
 import CardFollowings  from "../components/CardFollowings";
-// import ResearchBar  from "../components/ResearchBar";
+import ResearchBar  from "../components/ResearchBar";
 // import Logout from "../components/logout"
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
@@ -15,6 +15,10 @@ import PostTweet from "../components/PostTweet";
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
     border-bottom: none;
+`
+
+const TweetsContainer = styled.div`
+    
 `
 
 const Home = () =>{
@@ -40,26 +44,28 @@ const Home = () =>{
     
     return (    
         <div className="container-fluid">
-            <div className="row">
+            <div className="d-flex my-0">
                 <div className ="col-3 mt-4">
                     <SideNav/>
                 </div>
                 <CentralContainer className="col-5 m-0">
                     <TopBar
-                        title={"Home"}
+                        title={"Accueil"}
                     />
-                    <div className="row mt-3">
-                        <div className="col-8 m-0">
+                    <div className="row my-0 mt-3">
+                        <div>
                             <PostTweet/>
+                            <TweetsContainer>
                             {feed.map((tweet)=>
                                 <Tweet props = {tweet}></Tweet>
                             )}
+                            </TweetsContainer>
                         </div>
                     </div>
                 </CentralContainer>
                 <div className="col-4">
                     <div className="mx-3">
-                        {/* <ResearchBar/> */}
+                        <ResearchBar/>
                         <CardFollowings/>
                     </div>
                 </div>

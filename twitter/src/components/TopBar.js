@@ -7,9 +7,11 @@ const Container = styled.div`
 `
 
 const TitlePage = styled.h4`
+    font-family: Helvetica Neue;
     font-size: 10px,
     font-weight: bold;
     margin-top: 10px;
+    margin-left: 10px;
 `
 
 const TopBar = (props) => {

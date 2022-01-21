@@ -4,8 +4,9 @@ const UserContext = createContext({})
 
 const UserContextProvider = props => {
   const [ user, setUser ] = useState(null)
-  const [feed, setFeed] = useState([])
-  const [page, setPage] = useState(1)
+  const [ users, setUsers ] = useState(null)
+  const [ feed, setFeed ] = useState([])
+  const [ page, setPage ] = useState(1)
 
 
   useEffect(() => {

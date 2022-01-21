@@ -29,8 +29,8 @@ const FormGroup = styled.div`
 
 const InputTweet = styled.input`
   border: none;
-  width: 100%;
   margin-top: 1.5em;
+  width : 100%;
 
   ::placeholder {
     color: ;

@@ -10,13 +10,10 @@ const TweetContainer = styled.div`
     display : flex;
     border-bottom: 1px solid rgb(239, 243, 244);
     width : 100%;
-    height : 120px;
     padding-top : 15px;
     column-gap : 15px;
     row-gap : 2px;
     `
-    
-
 const PicContainer = styled.div`
     background-color : blue;
     border-radius : 50px;
@@ -35,16 +32,11 @@ const UserAt = styled.span`
 const TrashSpan = styled.span`
     margin-left : 250px;
     `
-
-
 const IconContainer = styled.div`
     display : flex;
     `
-
-
 const TextContainer = styled.div`
 `
-
 
 const Tweet = (props) =>{
     const {feed, setFeed } = useContext(UserContext)

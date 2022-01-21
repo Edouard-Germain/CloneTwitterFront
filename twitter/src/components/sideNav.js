@@ -13,7 +13,7 @@ import {BiHomeSmile} from 'react-icons/bi'
 import {FiUser} from 'react-icons/fi'
 import {FiUsers} from 'react-icons/fi'
 import {IoIosLogOut} from 'react-icons/io'
-import { BsTwitter } from "react-icons/bs";
+import {BsTwitter} from "react-icons/bs";
 
 
 const Container = styled.div`
@@ -23,7 +23,6 @@ const Container = styled.div`
     justify-content: space-between;
     padding-left: 20%;
     padding-right: 10%;
-    row-gap: 20px;
 `
 
 const Logocontainer = styled.div`
@@ -63,7 +62,7 @@ const SideNav = ()=>{
                     </Logocontainer>
                 </Link>
                 
-                <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                {/* <Link style={{textDecoration:"none"}} to = {`/${user.username}`} > */}
                     <Logocontainer>
                         <FiUser
                             style = {{
@@ -72,9 +71,9 @@ const SideNav = ()=>{
                         />
                         <Text>Profil</Text>
                     </Logocontainer> 
-                </Link>    
+                {/* </Link>     */}
                 
-                <Link style={{textDecoration:"none"}} to = {'/:username'}>
+                {/* <Link style={{textDecoration:"none"}} to = {'/:username'}> */}
                     <Logocontainer>
                         <FiUsers
                             style = {{
@@ -83,7 +82,7 @@ const SideNav = ()=>{
                         />
                         <Text>Utilisateurs</Text>
                     </Logocontainer>
-                </Link>
+                {/* </Link> */}
 
                 <Link style={{textDecoration:"none"}} to={'/login'}> 
                 <Logocontainer>

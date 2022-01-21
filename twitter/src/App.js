@@ -1,8 +1,5 @@
-import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { UserContextProvider } from './context/context'
-
-import styled from "styled-components";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home"
