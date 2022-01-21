@@ -35,11 +35,17 @@ const Text = styled.div`
     font-size: 18px;
     font-weight: 400;
     padding-left: 10px;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
 `
 
 const SideNav = ()=>{
-const {user} = useContext(UserContext)
-const isConnected = user ==! null
+    const {user} = useContext(UserContext)
+    const isConnected = user ==! null
+
+    console.log (user)
 
     return (
         <>
@@ -52,64 +58,55 @@ const isConnected = user ==! null
                     }}
                 />
                 <Link 
-                    style={{
-                        textDecoration:"none" 
-                    }} 
+                    style={{textDecoration:"none"}} 
                     to={'/home'}>
                     <Logocontainer>
                         <BiHomeSmile
                             style = {{
                                 fontSize: "1.8em",
+                                color: 'black',
                             }} 
                         />
                         <Text>Accueil</Text>
                     </Logocontainer>
                 </Link>
-                {/* <Link style={{textDecoration:"none"}} to = {`/${user.username}`} > */}
-                <Logocontainer>
-                        <FiUser
-                            style = {{
-                                fontSize : "1.8em",
-                            }}
-                        />
-                        <Text>Profil</Text>
-                    </Logocontainer> 
-                {/* </Link>     */}
-                {/* <Link style={{textDecoration:"none"}} to = {'/:username'}> */}
-                <Logocontainer>
-                        <FiUsers
-                            style = {{
-                                fontSize : "1.8em",
-                            }}
-                        />
-                        <Text>Utilisateurs</Text>
-                    </Logocontainer>
-                {/* </Link> */}
-                <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                <Link 
+                    style={{textDecoration:"none"}} 
+                    to = {`/${user.username}`}
+                >
                     <Logocontainer>
                         <FiUser
-                            style = {{fontSize : "1.8em",
-                            marginBottom : "4px"
-                        }}
+                            style = {{
+                                fontSize : "1.8em",
+                                color: 'black',
+                            }}
                         />
                         <Text>Profil</Text>
                     </Logocontainer>
                 </Link>
-                <Link style={{textDecoration:"none"}} to = {'/:username'}>
+                <Link 
+                    style={{textDecoration:"none"}} 
+                    to = {'/:username'}
+                >
                     <Logocontainer>
                         <FiUsers
-                            style = {{fontSize : "1.8em",
-                            marginBottom : "4px"
-                        }}
+                            style = {{
+                                fontSize : "1.8em",
+                                color: 'black',
+                            }}
                         />
                         <Text>Utilisateurs</Text>
                     </Logocontainer>
                 </Link>
-                <Link style={{textDecoration:"none"}} to={'/login'}>
+                <Link 
+                    style={{textDecoration:"none"}} 
+                    to={'/login'}
+                >
                     <Logocontainer>
                         <IoIosLogOut
                             style = {{
                                 fontSize : "1.8em",
+                                color: 'black',
                             }}
                         />
                         <Text>Logout</Text>

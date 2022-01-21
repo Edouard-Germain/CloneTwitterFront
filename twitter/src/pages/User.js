@@ -14,16 +14,18 @@ const CentralContainer = styled.div`
 
 const User = () =>{
 
-    const { user,feed, setFeed, page, setPage } = useContext(UserContext)
-    const [userTweet, setUserTweet] = useState(null)
+    const { user, feed, setFeed, page, setPage } = useContext(UserContext)
+    const [ userTweet, setUserTweet ] = useState(null)
 
     useEffect(() => {
         fetch(`http://localhost:5000/feed/${user._id}`)
         .then(response => response.json())
         .then(data => setUserTweet(data))
       }, [])
+
       console.log("usertweet", userTweet)
-    if (userTweet=== null){
+      
+    if (userTweet === null){
         return null
     }
     

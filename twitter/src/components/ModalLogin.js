@@ -35,8 +35,8 @@ const ModalLogin = (props) => {
  
     const formik = useFormik({
         initialValues: {
-          email: "",
-          password: ""
+          email: "benoit@benoit.io",
+          password: "temptemp"
         },
         onSubmit: values => {
           login(values)

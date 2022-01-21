@@ -8,30 +8,30 @@ import {UserContext} from '../context/context';
 
 const TweetContainer = styled.div`
     display : flex;
+    justify-content: space-between;
     border-bottom: 1px solid rgb(239, 243, 244);
     width : 100%;
-    padding-top : 15px;
-    column-gap : 15px;
-    row-gap : 2px;
-    `
+    padding: 10px 16px;
+`
 const PicContainer = styled.div`
     background-color : blue;
     border-radius : 50px;
     height : 60px;
     width : 60px;
-    `
+    margin-right: 10px;
+`
 const UserText = styled.p`
     color : black;
     font-weight : 600;
     margin : 0;
-    `
+`
 const UserAt = styled.span`
     color : #b8bdc2;
     font-weight : 400;
-    `
-const TrashSpan = styled.span`
-    margin-left : 250px;
-    `
+`
+const TrashSpan = styled.span`   
+`
+
 const IconContainer = styled.div`
     display : flex;
     `
@@ -39,7 +39,7 @@ const TextContainer = styled.div`
 `
 
 const Tweet = (props) =>{
-    const {feed, setFeed } = useContext(UserContext)
+    const { feed, setFeed } = useContext(UserContext)
     let retweet = props.props.retweets.length
     let comment = props.props.comments.length
     let id = props.props._id
@@ -47,13 +47,13 @@ const Tweet = (props) =>{
 
     const HandleDelete   = async () =>{
         try {
-           await fetch(`http://localhost:5000/tweets/${id}`,{
+            await fetch(`http://localhost:5000/tweets/${id}`,{
                 method : 'delete',
             })
-            .then (response=>response)
-            await fetch ('http://localhost:5000/feed')
-            .then(response => response.json())
-            .then(data => setFeed([...data]))
+                .then (response=>response)
+                await fetch ('http://localhost:5000/feed')
+                .then(response => response.json())
+                .then(data => setFeed([...data]))
         } catch (err) {
             console.log(err)
         }
@@ -61,22 +61,23 @@ const Tweet = (props) =>{
 
     return (
         <TweetContainer>
-            <PicContainer>           
-            </PicContainer>
-            <TextContainer>
-                <UserText> {props.props.user.username} 
-                    <UserAt>@{props.props.user.username} {time}</UserAt>
-                    <TrashSpan onClick = {HandleDelete}>
-                        <BiTrash/>
-                    </TrashSpan>
-                </UserText> 
-                <p>{props.props.content}</p>
-                <IconContainer>
-                        <p>{comment}</p><FaRegComment/>
-                        <p>{retweet}</p> <AiOutlineRetweet/>      
-                </IconContainer>
-            </TextContainer>
-            
+            <div className="d-flex">
+                <PicContainer>           
+                </PicContainer>
+                <TextContainer>
+                    <UserText> {props.props.user.username} 
+                        <UserAt>@{props.props.user.username} {time}</UserAt>
+                    </UserText> 
+                    <p>{props.props.content}</p>
+                    <IconContainer>
+                            <p>{comment}</p><FaRegComment/>
+                            <p>{retweet}</p> <AiOutlineRetweet/>      
+                    </IconContainer>
+                </TextContainer>
+            </div>
+            <TrashSpan onClick = {HandleDelete}>
+                <BiTrash/>
+            </TrashSpan>
         </TweetContainer>
     )
 

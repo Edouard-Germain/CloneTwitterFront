@@ -1,3 +1,4 @@
+import { useNavigate} from 'react-router-dom'
 import { useContext, useEffect, useState } from "react";
 import {UserContext} from '../context/context';
 import styled from "styled-components";
@@ -10,22 +11,24 @@ import ResearchBar  from "../components/ResearchBar";
 // import Logout from "../components/logout"
 import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
+import { BsTypeH1 } from 'react-icons/bs';
 
 
 const CentralContainer = styled.div`
-    border: 1px solid rgb(239, 243, 244);
-    border-bottom: none;
+    border-left: 1px solid rgb(239, 243, 244);
+    border-right: 1px solid rgb(239, 243, 244);
+    border-bottom: none;  
 `
 
 const TweetsContainer = styled.div`
-    
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
 `
 
 const Home = () =>{
- 
-    console.log('user',user)
+    const navigate = useNavigate()
 
-    const { 
+     const { 
         user, 
         feed,
         setFeed, 
@@ -33,42 +36,49 @@ const Home = () =>{
         setPage 
     } = useContext(UserContext)
 
-    
-    const handleTest =()=>{
-        console.log("test", feed)
-    }
     useEffect(() => {
-        fetch(`http://localhost:5000/feed/`)
-        .then(response => response.json())
-        .then(data => setFeed(m =>[...data, ...feed]))
+        getFeed() 
     }, [])
-    console.log('feed',feed)
-    
+
+        const getFeed = async () => {
+            const response = await fetch(`http://localhost:5000/feed/`)
+            const data = await response.json()
+            console.log(data)
+            setFeed([...data])
+        }
+    console.log("user verif", user)
+    if (user === null) {
+        return <h1>Login</h1>
+    } 
+    console.log("feed", feed)
+
     return (    
-        <div className="container-fluid">
-            <div className="d-flex my-0">
-                <div className ="col-3 mt-4">
+        <div className="container-fluid m-0">
+            <div className="d-flex">
+                <div className ="col-md-1 col-xl-3 mt-4">
                     <SideNav/>
                 </div>
-                <CentralContainer className="col-5 m-0">
+                <CentralContainer className="col-md-7 col-xl-5">
                     <TopBar
                         title={"Accueil"}
                     />
-                    <div className="row my-0 mt-3">
-                        <div>
-                            <PostTweet/>
-                            <TweetsContainer>
-                            {feed.map((tweet)=>
+                    <div className="row mt-3">
+                        <TweetsContainer>
+                            <PostTweet 
+                                getFeed={getFeed}
+                            />
+                            {feed.length > 0 && feed.map((tweet)=>
                                 <Tweet props = {tweet}></Tweet>
                             )}
-                            </TweetsContainer>
-                        </div>
+                        </TweetsContainer>
                     </div>
                 </CentralContainer>
                 <div className="col-4">
                     <div className="mx-3">
                         <ResearchBar/>
-                        <CardFollowings/>
+                        <div className="mt-4">
+                            <CardFollowings/>
+                        </div>  
                     </div>
                 </div>
             </div>
