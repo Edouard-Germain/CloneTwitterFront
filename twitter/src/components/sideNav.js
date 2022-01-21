@@ -39,6 +39,8 @@ const Text = styled.div`
 
 const SideNav = ()=>{
 const {user} = useContext(UserContext)
+const isConnected = user ==! null
+
     return (
         <Container>
 
@@ -62,16 +64,19 @@ const {user} = useContext(UserContext)
 
                 </Logocontainer>
             </Link>
-            <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
-                <Logocontainer>
-                    <FiUser
-                        style = {{fontSize : "1.8em",
-                        marginBottom : "4px"
-                    }}
-                    />
-                    <Text>Profil</Text>
-                </Logocontainer>
-            </Link>
+
+                <Link style={{textDecoration:"none"}} to = {`/${user.username}`} >
+                    
+                    <Logocontainer>
+                        <FiUser
+                            style = {{fontSize : "1.8em",
+                            marginBottom : "4px"
+                        }}
+                        />
+                        
+                        <Text>Profil</Text>
+                    </Logocontainer>
+                </Link>
             <Link style={{textDecoration:"none"}} to = {'/:username'}>
                 <Logocontainer>
                     <FiUsers

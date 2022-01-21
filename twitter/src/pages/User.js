@@ -18,11 +18,17 @@ const User = () =>{
     const [userTweet, setUserTweet] = useState(null)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/feed/`)
+        fetch(`http://localhost:5000/feed/${user._id}`)
         .then(response => response.json())
         .then(data => setUserTweet(data))
       }, [])
+      console.log("usertweet", userTweet)
+    if (userTweet=== null){
+        return null
+    }
+    
     return (
+    
         <div className="container-fluid">
             <div className="row">
                 <div className ="col-3 mt-3  flex-column">

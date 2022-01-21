@@ -12,7 +12,7 @@ const CentralContainer = styled.div`
 
 const Home = () =>{
     const { user,feed, page, setPage } = useContext(UserContext)
-    console.log(user)
+    console.log('user',user)
     return (
         <div className="container-fluid">
             <div className="row">
