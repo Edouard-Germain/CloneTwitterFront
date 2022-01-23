@@ -1,7 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import {UserContext} from '../context/context';
 
 import styled from "styled-components";
+
+import ItemFollow from "../components/ItemFollow";
 
 const Card = styled.div`
     background-color: rgb(247, 249, 249);
@@ -18,6 +20,12 @@ const ListItem = styled.li`
     border: none;
     list-style: none;
     padding: 10px 20px; 
+
+    :hover {
+        transition-property: background-color, box-shadow;
+        background-color: rgb(15, 20, 25, 0.1);
+        transition-duration: 0.2s
+    }
 `
 
 
@@ -30,10 +38,9 @@ const CardFollowings = () => {
                 You follow
             </CardTitle>
             <List>
-                <ListItem>An item</ListItem>
-                <ListItem>A second item</ListItem>
-                {/* <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A third item</li> */}
+                <ListItem><ItemFollow/></ListItem>
+                <ListItem><ItemFollow/></ListItem>
+                <ListItem><ItemFollow/></ListItem>
             </List>
         </Card>
     )

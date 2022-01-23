@@ -5,15 +5,16 @@ import styled from "styled-components";
 
 import TopBar from "../components/TopBar"
 import SideNav from "../components/SideNav";
-// import CreateTweet  from "../components/createTweet";
-import CardFollowings  from "../components/CardFollowings";
-import ResearchBar  from "../components/ResearchBar";
+import RightBar from "../components/RightBar";
 // import Logout from "../components/logout"
-import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
-import { BsTypeH1 } from 'react-icons/bs';
 import TweetCard from "../components/TweetCard";
 
+
+const MainContainer = styled.div`
+    display: flex;
+    justify-content: start;
+`
 
 const CentralContainer = styled.div`
     border-left: 1px solid rgb(239, 243, 244);
@@ -54,16 +55,16 @@ const Home = () =>{
     console.log("feed", feed)
 
     return (    
-        <div className="container-fluid m-0">
+        <div className="container mx-5">
             <div className="d-flex">
-                <div className ="col-md-1 col-xl-3 mt-4">
+                <div className ="col-lg-1 col-xl-3">
                     <SideNav/>
                 </div>
-                <CentralContainer className="col-md-7 col-xl-5">
-                    <TopBar
-                        title={"Accueil"}
-                    />
-                    <div className="row mt-3">
+                <MainContainer className="col-lg-11 col-xl-9">
+                    <CentralContainer className="col-7">
+                        <TopBar
+                            title={"Accueil"}
+                        />
                         <TweetsContainer>
                             <PostTweet 
                                 getFeed={getFeed}
@@ -72,16 +73,11 @@ const Home = () =>{
                                 <TweetCard props = {tweet}></TweetCard>
                             )}
                         </TweetsContainer>
+                    </CentralContainer>
+                    <div className="col-5">
+                         <RightBar/>
                     </div>
-                </CentralContainer>
-                <div className="col-4">
-                    <div className="mx-3">
-                        <ResearchBar/>
-                        <div className="mt-4">
-                            <CardFollowings/>
-                        </div>  
-                    </div>
-                </div>
+                </MainContainer>    
             </div>
         </div>
     )

@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-// import { UserContext } from '../context/context'
+import { useState } from "react";
 import styled from "styled-components";
-import ModalLogin from "../components/ModalLogin";
-import ModalSignup from "../components/ModalSignup";
+import ModalLogin from "../components/modals/ModalLogin";
+import ModalSignup from "../components/modals/ModalSignup";
 
 import { 
     ButtonBlue,

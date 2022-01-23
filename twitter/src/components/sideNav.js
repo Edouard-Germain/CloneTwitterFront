@@ -1,13 +1,13 @@
-import {Link } from 'react-router-dom'
-import { useContext,useState } from 'react';
+import {Link} from 'react-router-dom'
+import {useContext} from 'react';
 import {UserContext} from '../context/context';
-
+import MediaQuery from 'react-responsive'
 import styled from "styled-components";
 import { 
-    ButtonBlue,
+    ButtonBlueLarge,
 } from "../styles/Button";
 
-import ButtonProfile from "./ButtonProfile";
+import ButtonProfile from "./buttons/ButtonProfile";
 
 import {BiHomeSmile} from 'react-icons/bi'
 import {FiUser} from 'react-icons/fi'
@@ -21,103 +21,123 @@ const Container = styled.div`
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 20%;
     padding-right: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 `
-
-const Logocontainer = styled.div`
-    display: flex;
+const List = styled.ul`
     padding-top: 20px;
+    padding-inline-start: 0;
 `
 
+const ListItem = styled.li`
+    display: flex;
+    margin: 15px 0px;
+    padding: 10px 16px;
+
+    :hover {
+        transition-property: background-color, box-shadow;
+        background-color: rgb(15, 20, 25, 0.1);
+        border-radius: 90px;
+        transition-duration: 0.2s
+    }
+`
 const Text = styled.div`
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
-    padding-left: 10px;
+    padding-left: 20px;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1204px) {
         display: none;
     }
 `
 
-const SideNav = ()=>{
+const SideNav = () => {
     const {user} = useContext(UserContext)
     const isConnected = user ==! null
-
-    console.log (user)
 
     return (
         <>
         <Container>
             <div>
-                <BsTwitter
-                    style={{
-                        fontSize: "2.5em",
-                        color: "rgb(29, 155, 240)"
-                    }}
-                />
-                <Link 
-                    style={{textDecoration:"none"}} 
-                    to={'/home'}>
-                    <Logocontainer>
-                        <BiHomeSmile
-                            style = {{
-                                fontSize: "1.8em",
-                                color: 'black',
-                            }} 
-                        />
-                        <Text>Accueil</Text>
-                    </Logocontainer>
-                </Link>
-                <Link 
-                    style={{textDecoration:"none"}} 
-                    to = {`/${user.username}`}
-                >
-                    <Logocontainer>
-                        <FiUser
-                            style = {{
-                                fontSize : "1.8em",
-                                color: 'black',
-                            }}
-                        />
-                        <Text>Profil</Text>
-                    </Logocontainer>
-                </Link>
-                <Link 
-                    style={{textDecoration:"none"}} 
-                    to = {'/:username'}
-                >
-                    <Logocontainer>
-                        <FiUsers
-                            style = {{
-                                fontSize : "1.8em",
-                                color: 'black',
-                            }}
-                        />
-                        <Text>Utilisateurs</Text>
-                    </Logocontainer>
-                </Link>
-                <Link 
-                    style={{textDecoration:"none"}} 
-                    to={'/login'}
-                >
-                    <Logocontainer>
-                        <IoIosLogOut
-                            style = {{
-                                fontSize : "1.8em",
-                                color: 'black',
-                            }}
-                        />
-                        <Text>Logout</Text>
-                    </Logocontainer> 
-                </Link>
-                <div className="mt-4">
-                    <ButtonBlue>Tweet</ButtonBlue>
+                <div className="ms-3">
+                    <BsTwitter
+                        style={{
+                            fontSize: "2em",
+                            color: "rgb(29, 155, 240)",
+                        }}
+                    />
                 </div>
+                <List >
+                    <Link 
+                        style={{textDecoration:"none"}} 
+                        to={'/home'}>
+                        <ListItem>
+                            <BiHomeSmile
+                                style = {{
+                                    fontSize: "1.8em",
+                                    color: 'black',
+                                }} 
+                            />
+                            <Text>Accueil</Text>
+                        </ListItem>
+                    </Link>
+                    <Link 
+                        style={{textDecoration:"none"}} 
+                        to = {`/${user.username}`}
+                    >
+                        <ListItem>
+                            <FiUser
+                                style = {{
+                                    fontSize : "1.8em",
+                                    color: 'black',
+                                }}
+                            />
+                            <Text>Profil</Text>
+                        </ListItem>
+                    </Link>
+                    <Link 
+                        style={{textDecoration:"none"}} 
+                        to = {'/:username'}
+                    >
+                        <ListItem>
+                            <FiUsers
+                                style = {{
+                                    fontSize : "1.8em",
+                                    color: 'black',
+                                }}
+                            />
+                            <Text>Utilisateurs</Text>
+                        </ListItem>
+                    </Link>
+                    <Link 
+                        style={{textDecoration:"none"}} 
+                        to={'/login'}
+                    >
+                        <ListItem>
+                            <IoIosLogOut
+                                style = {{
+                                    fontSize : "1.8em",
+                                    color: 'black',
+                                }}
+                            />
+                            <Text>Logout</Text>
+                        </ListItem> 
+                    </Link>
+                </List >
+
+                <MediaQuery minWidth={1224}>
+                    <div className="mt-4">
+                        <ButtonBlueLarge>Tweet</ButtonBlueLarge>
+                    </div>
+                </MediaQuery>
             
             </div>
-            <ButtonProfile/>
+            <MediaQuery minWidth={1224}>
+                <ButtonProfile/>
+            </MediaQuery>
+            
         </Container>
         </>  
     )

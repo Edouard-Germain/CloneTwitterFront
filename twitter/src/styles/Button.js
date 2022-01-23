@@ -6,8 +6,24 @@ const ButtonBlue = styled.button`
     cursor: pointer;
     height: 40px;
     width: 100%;
-    margin-bottom: 5px;
-    padding-top: 2px;
+    border-radius: 90px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+
+    :hover {
+        transition-property: background-color, box-shadow;
+        background-color: rgb(26, 140, 216);
+        transition-duration: 0.2s
+    }
+`
+
+const ButtonBlueLarge = styled.button`
+    background-color: rgb(29, 155, 240);
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
     border-radius: 90px;
     text-align: center;
     color: white;
@@ -26,8 +42,6 @@ const ButtonWhite = styled.button`
     cursor: pointer;
     height: 40px;
     width: 100%;
-    margin-bottom: 5px;
-    padding-top: 2px;
     border-radius: 90px;
     text-align: center;
     color: rgb(29, 155, 240);
@@ -46,12 +60,30 @@ const ButtonBlack = styled.button`
     cursor: pointer;
     height: 40px;
     width: 100%;
-    margin-bottom: 5px;
-    padding-top: 2px;
     border-radius: 90px;
     text-align: center;
     color: rgb(255, 255, 255);
     font-weight: bold;
+
+    :hover {
+        transition-property: background-color, box-shadow;
+        background-color: rgb(0, 0, 0, 0.1);
+        transition-duration: 0.2s
+    }
+`
+
+const ButtonBlackSmall = styled.button`
+    background-color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 100%;
+    padding: 0 20px;
+    border-radius: 90px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 14px;
 
     :hover {
         transition-property: background-color, box-shadow;
@@ -82,7 +114,9 @@ const ButtonClose = styled.button`
 
 export {
     ButtonBlue,
+    ButtonBlueLarge,
     ButtonWhite,
     ButtonBlack,
+    ButtonBlackSmall,
     ButtonClose,
 }

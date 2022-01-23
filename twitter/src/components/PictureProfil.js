@@ -1,30 +1,54 @@
-import { useContext, useState } from "react";
-import {UserContext} from '../context/context';
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from '../context/context';
 import styled from "styled-components";
 
 const PicContainer = styled.div`
-    ${props => props.picture &&}
-    border-radius : 50px;
-    height : 60px;
-    width : 60px;
+    ${props => !props.picture && "background-color: rgb(29, 155, 240)"}; 
+    background-image: url('${props => props.user.pictureUrl}');
+    background-position: bottom;
+    background-size: cover;
+    border-radius : ${props => props.size};
+    height : ${props => props.size};
+    width : ${props => props.size};
+    margin-right: ${props => props.marginRight};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
-const PictureUser = (props) =>{
-    const { user } = useContext(UserContext)
-    const {picture, setPicture} = (false)
+const Letter = styled.h3`
+    text-align: center;
+    color: white;
+    margin: 0;
+`
 
-    if (user.picture === "") {
-        setPicture(false)
-    } else {
-        setPicture(true)
-    }
+const PictureProfil = ( props ) =>{
+    const {user} = useContext(UserContext)
+    const [isPicture, setIsPicture] = useState(false)
+
+    console.log("pictureUser",user)
+
+    useEffect(() => {
+        if (user.pictureUrl === "") {
+            setIsPicture(false)
+        } else {
+            setIsPicture(true)
+        }
+    }, [isPicture])
+
+    console.log("picture",isPicture)
 
     return (
         <PicContainer 
-            picture={picture}>
+            picture={isPicture}
+            user={user}
+            size={props.size}
+            marginRight={props.marginRight}
+        >
+            <Letter>{user.username[user.username.length-user.username.length]}</Letter>
         </PicContainer>
     )
 }
 
 
-export default PictureUser 
+export default PictureProfil

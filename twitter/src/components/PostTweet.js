@@ -1,40 +1,37 @@
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from '../context/context';
-// import PictureProfil from "../components/PictureProfil";
 
 import styled from "styled-components";
+
+import PictureProfil from "../components/PictureProfil";
+import Form from "react-bootstrap/Form";
+
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import Form from "react-bootstrap/Form";
-
 import { 
-    ButtonBlue,
+  ButtonBlue,
 } from "../styles/Button";
 
 const Container = styled.div`
   border-bottom: 1px solid rgb(239, 243, 244);
   padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
   height: 140px;
 `
-const PicContainer = styled.div`
-  background-color : blue;
-  border-radius : 50px;
-  height : 60px;
-  width : 60px;
-  margin-right: 10px;
-`
 const FormGroup = styled.div`
+  display: flex;
+  align-items: center;
 `
 const InputTweet = styled.input`
   border: none;
-  margin-top: 1.5em;
-  width : 100%;
+  width: 100%;
+  outline: none;
 
   ::placeholder {
-    color: ;
-    font-size: 1.5em;
+    font-size: 20px;
   }
 `
 const PostTweet = (props) => {
@@ -74,10 +71,7 @@ const PostTweet = (props) => {
       } else {
         alert(response.statusText)
       }
-      console.log("data", data)
   }
-    
-    console.log("form", formik.values)
 
     return (
       <Container className="container-fluid">
@@ -85,7 +79,11 @@ const PostTweet = (props) => {
             onSubmit={formik.handleSubmit} 
         >
         <div className="d-flex" >
-          <PicContainer className="col-1"/>
+          <PictureProfil 
+            className="col-1"
+            size={"50px"}
+            marginRight={"15px"}
+          />
           <FormGroup
             className="col-10"
           >
@@ -109,7 +107,6 @@ const PostTweet = (props) => {
                 </ButtonBlue>
               </div>
             </div>
-
           </Form>
       </Container>
     )

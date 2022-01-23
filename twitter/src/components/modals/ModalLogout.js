@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react";
-import { UserContext } from '../context/context';
+import { UserContext } from '../../context/context';
 
 import styled from "styled-components";
 import { useFormik } from 'formik'
@@ -16,7 +16,7 @@ import ModalTitle from "react-bootstrap/ModalTitle";
 import { 
     ButtonBlack,
     ButtonWhite,
-} from "../styles/Button";
+} from "../../styles/Button";
 
 import { BsTwitter } from "react-icons/bs";
 
