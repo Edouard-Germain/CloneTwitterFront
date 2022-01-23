@@ -17,8 +17,7 @@ const Tweet = () => {
     return (
         
             <div>
-                <TweetCard props = {comments}/>
-                
+                <TweetCard props = {comments}/>    
             </div>
         
     )

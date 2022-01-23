@@ -11,32 +11,37 @@ import {UserContext} from '../context/context';
 const TweetContainer = styled.div`
     display : flex;
     justify-content: space-between;
+
     border-bottom: 1px solid rgb(239, 243, 244);
     width : 100%;
-    padding: 10px 16px;
-`
+    height : 120px;
+    padding-top : 15px;
+    column-gap : 15px;
+    row-gap : 2px;
+    `
+    
+
 const PicContainer = styled.div`
     background-color : blue;
     border-radius : 50px;
     height : 60px;
     width : 60px;
-    margin-right: 10px;
-`
+    `
 const UserText = styled.p`
     color : black;
     font-weight : 600;
     margin : 0;
-`
+    `
 const UserAt = styled.span`
     color : #b8bdc2;
     font-weight : 400;
-`
-const TrashSpan = styled.span`   
-`
-
-const IconContainer = styled.div`
-    display : flex;
     `
+const TrashSpan = styled.span`
+    margin-left : 250px;
+    `
+
+
+
 const TextContainer = styled.div`
 `
 
@@ -48,13 +53,13 @@ const TweetCard = (props) =>{
 
     const HandleDelete   = async () =>{
         try {
-            await fetch(`http://localhost:5000/tweets/${id}`,{
+           await fetch(`http://localhost:5000/tweets/${id}`,{
                 method : 'delete',
             })
-                .then (response=>response)
-                await fetch ('http://localhost:5000/feed')
-                .then(response => response.json())
-                .then(data => setFeed([...data]))
+            .then (response=>response)
+            await fetch ('http://localhost:5000/feed')
+            .then(response => response.json())
+            .then(data => setFeed([...data]))
         } catch (err) {
             console.log(err)
         }
@@ -75,6 +80,9 @@ const TweetCard = (props) =>{
                         <p>{props.props.content}</p>
                     </TextContainer>
             </TweetContainer>
+
+   
     )
+
 }
 export default TweetCard
