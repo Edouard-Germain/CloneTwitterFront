@@ -82,7 +82,7 @@ const ModalSignup = (props) => {
         }
     
       }
-      console.log(formik.errors.password)
+      // console.log(formik.errors.password)
     return (
         <>
             <Modal 

@@ -9,7 +9,6 @@ import SideNav from "../components/SideNav";
 import CardFollowings  from "../components/CardFollowings";
 import ResearchBar  from "../components/ResearchBar";
 // import Logout from "../components/logout"
-import Tweet from "../components/tweet";
 import PostTweet from "../components/PostTweet";
 import { BsTypeH1 } from 'react-icons/bs';
 import TweetCard from "../components/TweetCard";

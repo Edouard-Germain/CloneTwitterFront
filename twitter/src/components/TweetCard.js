@@ -45,7 +45,7 @@ const TweetCard = (props) =>{
     let comment = props.props.comments.length
     let id = props.props._id
     let time =  moment(props.props.createdat).format('DD/MM/YY')
-
+    // console.log('props', props)
     const HandleDelete   = async () =>{
         try {
             await fetch(`http://localhost:5000/tweets/${id}`,{

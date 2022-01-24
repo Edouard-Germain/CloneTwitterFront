@@ -71,7 +71,7 @@ const TweetCard = (props) =>{
                     <PicContainer>           
                     </PicContainer>
                     <TextContainer>
-                        <UserText> {props.props.user.username} 
+                        <UserText> {props.props.user.username} Zgeg
                             <UserAt>@{props.props.user.username} {time}</UserAt>
                             <TrashSpan onClick = {HandleDelete}>
                                 <BiTrash/>

@@ -61,7 +61,7 @@ const ModalLogin = (props) => {
         })
 
         const user = await response.json()
-        console.log(user)
+        // console.log(user)
     
         if (user) {
           setUser(user)
@@ -72,7 +72,7 @@ const ModalLogin = (props) => {
         }
     
       }
-      console.log(formik.errors.password)
+      // console.log(formik.errors.password)
     return (
         <>
             <Modal 
