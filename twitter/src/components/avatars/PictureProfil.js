@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from '../context/context';
 import styled from "styled-components";
 
 const PicContainer = styled.div`
-    background-color: rgb(29, 155, 240); 
-    background-image: url('${props => props.pictureUrl}');
+    ${props => !props.picture && "background-color: rgb(29, 155, 240)"}; 
+    background-image: url('${props => props.user.pictureUrl}');
     background-position: bottom;
     background-size: cover;
     border-radius : ${props => props.size};
@@ -21,31 +22,32 @@ const Letter = styled.h3`
     margin: 0;
 `
 
-const PictureFollow = ( props ) =>{
+const PictureProfil = ( props ) =>{
+    const {user} = useContext(UserContext)
     const [isPicture, setIsPicture] = useState(false)
 
     useEffect(() => {
-        if (props.pictureUrl === "") {
+        if (user.pictureUrl === "") {
             setIsPicture(false)
         } else {
             setIsPicture(true)
         }
     }, [])
-
-    console.log("props.username", props.username)
+    console.log("username Picture", user)
+    console.log("username", props)
 
     return (
         <PicContainer 
             picture={isPicture}
-            pictureUrl={props.pictureUrl}
+            user={user}
             size={props.size}
             marginRight={props.marginRight}
         >
             {!isPicture && 
-            <Letter>{props.username[0].toLowerCase()}</Letter>}
+            <Letter>{user.username[0].toLowerCase()}</Letter>}
         </PicContainer>
     )
 }
 
 
-export default PictureFollow
+export default PictureProfil

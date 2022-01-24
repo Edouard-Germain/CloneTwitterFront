@@ -8,7 +8,6 @@ const Container = styled.div`
 `
 
 const TitlePage = styled.h5`
-    font-family: Helvetica Neue;
     font-size: 10px,
 `
 

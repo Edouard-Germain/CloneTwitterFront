@@ -14,7 +14,7 @@ const Home = () =>{
     if (user === null) {
         return <h1>Login</h1>
     } 
-
+    // console.log('user',user)
     return (    
         <div className="mx-5">
             <div className="d-flex">

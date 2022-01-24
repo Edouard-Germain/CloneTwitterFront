@@ -5,8 +5,6 @@ import {AiOutlineRetweet} from "react-icons/ai"
 import {FaRegComment} from "react-icons/fa"
 
 
-
-
 const TweetContainer = styled.div`
 display : flex;
 justify-content: space-between;
@@ -30,7 +28,6 @@ const UserAt = styled.span`
 color : #b8bdc2;
 font-weight : 400;
 `
-
 const IconContainer = styled.div`
 display : flex;
 `
@@ -45,23 +42,24 @@ const EpiTweet = (props) => {
     console.log('props', props)
     let retweet = props.props.retweets.length
     let comment = props.props.comments.length
+    
     return (
-<TweetContainer>
-                <div className="d-flex">
-                    <PicContainer>           
-                    </PicContainer>
-                    <TextContainer>
-                        <UserText> {props.props.user.username} 
-                            <UserAt>@{props.props.user.username} {time}</UserAt>
-                        </UserText> 
-                        <Content>{props.props.content}</Content>
-                        <IconContainer>
-                                <p>{comment}</p><FaRegComment/>
-                                <p>{retweet}</p> <AiOutlineRetweet/>      
-                        </IconContainer>
-                    </TextContainer>
-                </div>
-            </TweetContainer>
+        <TweetContainer>
+            <div className="d-flex">
+                <PicContainer>           
+                </PicContainer>
+                <TextContainer>
+                    <UserText> {props.props.user.username} 
+                        <UserAt>@{props.props.user.username} {time}</UserAt>
+                    </UserText> 
+                    <Content>{props.props.content}</Content>
+                    <IconContainer>
+                            <p>{comment}</p><FaRegComment/>
+                            <p>{retweet}</p> <AiOutlineRetweet/>      
+                    </IconContainer>
+                </TextContainer>
+            </div>
+        </TweetContainer>
     )
 }
 

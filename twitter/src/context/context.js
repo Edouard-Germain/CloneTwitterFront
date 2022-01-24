@@ -10,6 +10,8 @@ const UserContextProvider = props => {
   const [ feed, setFeed ] = useState([])
   const [ showLogout, setShowLogout ] = useState(false);
   const [ showTweet, setShowTweet ] = useState(false);
+  const [ comments, setComments ] = useState(null)
+
   // const [ page, setPage ] = useState(1)
 
   
@@ -19,6 +21,14 @@ const UserContextProvider = props => {
     })
     const data = await response.json()
     setFeed([...data])
+  }
+
+  const getComments = async (id) => {
+    const response = await fetch(`http://localhost:5000/tweets/${id}`,{
+      method:'get',
+    })
+    const data = await response.json()
+    setComments(data)
   }
 
   const getUsers = async () => {
@@ -37,17 +47,19 @@ const UserContextProvider = props => {
     setUser([...data])
   }
   
-  // const putFollowing = async (_id, body) => {
-  //   const response = await fetch(`http://localhost:5000/users/${_id}`, {
-  //     method: 'put',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(body)
-  //   })
-  //   const data = await response.json()
-  //   setUser([...data])
-  // }
+  const putFollowing = async (_id, body) => {
+    const response = await fetch(`http://localhost:5000/users/${_id}`, {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    console.log("hello")
+    const data = await response.json()
+    console.log('data',data)
+    setUser([...data])
+  }
  
   const handleCloseTweet = () => setShowTweet(false);
   const handleCloseLogout = () => setShowLogout(false);
@@ -82,6 +94,10 @@ const UserContextProvider = props => {
       feed,
       setFeed,
       getFeed,
+      putFollowing,
+      comments,
+      setComments,
+      getComments
   }
   
   return (

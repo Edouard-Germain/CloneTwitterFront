@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useParams } from 'react-router';
 import styled from "styled-components";
 
@@ -8,6 +8,8 @@ import SideNav from "../components/bars/SideNav";
 import FollowsCard  from "../components/cards/FollowsCard";
 import ResearchBar  from "../components/bars/ResearchBar";
 import CommentCard from "../components/CommentCard"
+import InputComment from "../components/inputs/InputComment"
+import { UserContext } from "../context/context";
 
 
 const CentralContainer = styled.div`
@@ -21,22 +23,17 @@ const TweetsContainer = styled.div`
     overflow-y: scroll;
 `
 
-const HeightTest = styled.div`
-    height : 100px;
-    background-color : blue;
-`
 
 const Tweet = () => {
-    const [ comments, setComments ] = useState(null)
     const {id} = useParams()
+    const {comments, setComments} = useContext(UserContext)
 
     useEffect(() => {
         fetch(`http://localhost:5000/tweets/${id}`)
         .then(response => response.json())
         .then(data => setComments(data))
       }, [])
-      console.log("comments",comments)
-      console.log('id',id)
+    //   console.log('id',id)
 
 
     if (comments == null ){
@@ -55,7 +52,7 @@ const Tweet = () => {
                 <div className="row mt-3">
                     <TweetsContainer>
                         <EpiTweet props = {comments}/>
-                        <HeightTest/>
+                        <InputComment props = {id}/>
                         {comments.comments.map((comment)=>
                             <CommentCard props={comment}/>)}
                         {/* {feed.length > 0 && feed.map((tweet)=>
