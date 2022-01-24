@@ -24,7 +24,7 @@ const TweetsContainer = styled.div`
 const HeightTest = styled.div`
     height : 100px;
     background-color : blue;
-    `
+`
 
 const Tweet = () => {
     const [ comments, setComments ] = useState(null)

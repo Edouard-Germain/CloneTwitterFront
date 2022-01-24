@@ -28,6 +28,14 @@ const UserContextProvider = props => {
     const data = await response.json()
     setUsers([...data])
   }
+
+  const getUser = async (_id) => {
+    const response = await fetch(`http://localhost:5000/users/${_id}` , {
+      method: 'get',
+    })
+    const data = await response.json()
+    setUser([...data])
+  }
   
   // const putFollowing = async (_id, body) => {
   //   const response = await fetch(`http://localhost:5000/users/${_id}`, {
@@ -58,6 +66,7 @@ const UserContextProvider = props => {
   const value = {
       user,
       setUser,
+      getUser,
       users,
       showLogout,
       setShowLogout,

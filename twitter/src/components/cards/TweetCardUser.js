@@ -56,6 +56,7 @@ const TweetCard = (props) =>{
     let id = props.props._id
     let time =  moment(props.props.createdat).format('DD/MM/YY')
 
+    
     const HandleDelete = async () =>{
         try {
             await fetch(`http://localhost:5000/tweets/${id}`,{
@@ -81,7 +82,7 @@ const TweetCard = (props) =>{
             >
             <div className="d-flex">
 
-                {user.username === props.props.user.username ? (
+                {/* {user.username === props.props.user.username ? (
                     <PictureProfil
                         size={"50px"}
                         marginRight={"15px"}
@@ -93,7 +94,7 @@ const TweetCard = (props) =>{
                         pictureUrl={props.props.user.pictureUrl}
                         username={props.props.user.username}
                     />  
-                )}        
+                )}         */}
                 <TextContainer>
                     <UserText> {props.props.user.username} 
                         <UserAt>@{props.props.user.username} {time}</UserAt>

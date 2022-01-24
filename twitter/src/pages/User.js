@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Logout from "../components/logout"
 import SideNav from "../components/bars/SideNav";
 import InputTweet from "../components/inputs/InputTweet";
-import TweetCard from "../components/cards/TweetCard";
+import TweetCardUser from "../components/cards/TweetCardUser";
 
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
@@ -14,17 +14,18 @@ const CentralContainer = styled.div`
 
 const User = () =>{
 
-    const { user, feed, setFeed, page, setPage } = useContext(UserContext)
+    const { user, getUser } = useContext(UserContext)
     const [ userTweet, setUserTweet ] = useState(null)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/feed/${user._id}`)
-        .then(response => response.json())
-        .then(data => setUserTweet(data))
-      }, [])
-    if (userTweet=== null){
-        return null
+        getUser()
+    }, [])
+
+    if (user === null){
+        return <p>Erreur de login</p>
     }
+
+    console.log("user", user)
     
     return (
     
@@ -40,8 +41,8 @@ const User = () =>{
                     <div className="row">
                         <div className="col-8 p-0">
                             <InputTweet/>
-                            {userTweet.map((tweet)=>
-                                <TweetCard props = {tweet}></TweetCard>
+                            {user.tweets.map((tweet)=>
+                                <TweetCardUser props = {tweet}></TweetCardUser>
                             )}
                         </div>
                         <div className="col-4 bg-primary">

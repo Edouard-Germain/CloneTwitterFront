@@ -21,7 +21,7 @@ const Letter = styled.h3`
     margin: 0;
 `
 
-const PictureProfil = ( props ) =>{
+const PictureFollow = ( props ) =>{
     const [isPicture, setIsPicture] = useState(false)
 
     useEffect(() => {
@@ -31,6 +31,8 @@ const PictureProfil = ( props ) =>{
             setIsPicture(true)
         }
     }, [])
+
+    console.log("props.username", props.username)
 
     return (
         <PicContainer 
@@ -46,4 +48,4 @@ const PictureProfil = ( props ) =>{
 }
 
 
-export default PictureProfil
+export default PictureFollow
