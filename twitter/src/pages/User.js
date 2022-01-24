@@ -4,9 +4,9 @@ import {UserContext} from '../context/context';
 import styled from "styled-components";
 
 import Logout from "../components/logout"
-import SideNav from "../components/SideNav";
-import PostTweet from "../components/PostTweet";
-import TweetCard from "../components/TweetCard";
+import SideNav from "../components/bars/SideNav";
+import InputTweet from "../components/inputs/InputTweet";
+import TweetCard from "../components/cards/TweetCard";
 
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
@@ -39,7 +39,7 @@ const User = () =>{
                 <CentralContainer className="col-9">
                     <div className="row">
                         <div className="col-8 p-0">
-                            <PostTweet/>
+                            <InputTweet/>
                             {userTweet.map((tweet)=>
                                 <TweetCard props = {tweet}></TweetCard>
                             )}

@@ -1,5 +1,5 @@
-import CardFollowings  from "../components/CardFollowings";
-import ResearchBar  from "../components/ResearchBar";
+import FollowsCard  from "../../components/cards/FollowsCard";
+import ResearchBar  from "../inputs/ResearchBar";
 
 import styled from "styled-components";
 
@@ -7,7 +7,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding-left: 5%;
+    padding-left: 30px;
 `
 
 const RightBar = () => {
@@ -16,7 +16,7 @@ const RightBar = () => {
         <Container>
             <ResearchBar/>
             <div className="mt-4">
-                <CardFollowings/>
+                <FollowsCard />
             </div> 
         </Container>
     

@@ -59,7 +59,6 @@ const TweetCard = (props) =>{
             console.log(err)
         }
     }
-    console.log("props",props)
 
     return (
             <TweetContainer>

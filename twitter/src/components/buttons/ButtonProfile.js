@@ -1,16 +1,19 @@
-import {useContext} from 'react';
-import {UserContext} from '../../context/context';
+import { useContext } from 'react';
+import { UserContext } from '../../context/context';
 
 import styled from "styled-components"
-import { BiDotsHorizontalRounded } from "react-icons/bi"
+import { 
+    ButtonBlackSmall,
+} from "../../styles/Button";
 
+// import { BiDotsHorizontalRounded } from "react-icons/bi"
 import PictureProfil from "../../components/PictureProfil";
 
 const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 5px 15px;
   
     :hover {
         transition-property: background-color, box-shadow;
@@ -35,9 +38,12 @@ const Subtext = styled.p`
     margin: 0;  
 `
 
-const ButtonProfil =() => {
-    const {user} = useContext(UserContext)
-
+const ButtonProfil = (props) => {
+    const {
+        user,
+        handleShowLogout,
+    } = useContext(UserContext)
+    
     return (
         <Container>
             <div className="d-flex flex-row justify-content-start align-items-center">
@@ -51,12 +57,13 @@ const ButtonProfil =() => {
                 </Textcontainer>
             </div>
            
-            <div>
-                <BiDotsHorizontalRounded
-                    style = {{
-                        fontSize: "2em",
-                    }}          
-                />
+           <div>
+                <ButtonBlackSmall
+                    type="button"
+                    onClick={handleShowLogout}
+                >
+                    <span>Logout</span>
+                </ButtonBlackSmall>
             </div>
         </Container>
     )

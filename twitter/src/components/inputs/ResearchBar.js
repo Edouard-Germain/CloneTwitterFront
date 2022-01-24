@@ -7,7 +7,7 @@ const Container = styled.div`
     position: relative; 
     background-color: rgb(247, 249, 249);
     border-radius: 16px;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     padding: 10px 20px; 
     width: 100%;
     display: flex;

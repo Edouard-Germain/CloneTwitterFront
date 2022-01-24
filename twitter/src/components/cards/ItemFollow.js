@@ -1,14 +1,13 @@
-import {useContext} from 'react';
-import {UserContext} from '../context/context';
+import { useContext } from "react";
+import { UserContext } from '../../context/context';
 
 import styled from "styled-components"
-import { BiDotsHorizontalRounded } from "react-icons/bi"
 
-import PictureProfil from "../components/PictureProfil";
+import PictureFollow from "../PictureFollow";
 
 import { 
     ButtonBlackSmall,
-} from "../styles/Button";
+} from "../../styles/Button";
 
 const Container = styled.div`
     display: flex;
@@ -31,27 +30,39 @@ const Subtext = styled.p`
     margin: 0;  
 `
 
-const ButtonProfil =() => {
-    const {user} = useContext(UserContext)
+const ItemFollow = (props) => {
+    const { putFollowing } = useContext(UserContext)
+    console.log("propsFollow", props)
+    
+    if (!props) {
+        return <p>Chargement</p>
+    }
 
     return (
         <Container>
             <div className="d-flex flex-row justify-content-start">
-                <PictureProfil
+                <PictureFollow
                     size={"50px"}
                     marginRight={"15px"}
+                    pictureUrl={props.pictureUrl}
+                    username={props.username}
+                    id={props.id}
                 />
                 <Textcontainer>
-                    <Text>{user.username}</Text>
-                    <Subtext>@{user.username}</Subtext>
+                    <Text>{props.username}</Text>
+                    <Subtext>@{props.username}</Subtext>
                 </Textcontainer>
             </div>
            
             <div>
-                <ButtonBlackSmall>Follow</ButtonBlackSmall>
+                <ButtonBlackSmall
+                    onClick={putFollowing}
+                >
+                    Follow
+                </ButtonBlackSmall>
             </div>
         </Container>
     )
 }
 
-export default ButtonProfil
+export default ItemFollow

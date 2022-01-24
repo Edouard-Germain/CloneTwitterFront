@@ -1,10 +1,9 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from '../context/context';
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const PicContainer = styled.div`
-    ${props => !props.picture && "background-color: rgb(29, 155, 240)"}; 
-    background-image: url('${props => props.user.pictureUrl}');
+    background-color: rgb(29, 155, 240); 
+    background-image: url('${props => props.pictureUrl}');
     background-position: bottom;
     background-size: cover;
     border-radius : ${props => props.size};
@@ -23,11 +22,10 @@ const Letter = styled.h3`
 `
 
 const PictureProfil = ( props ) =>{
-    const {user} = useContext(UserContext)
     const [isPicture, setIsPicture] = useState(false)
 
     useEffect(() => {
-        if (user.pictureUrl === "") {
+        if (props.pictureUrl === "") {
             setIsPicture(false)
         } else {
             setIsPicture(true)
@@ -37,12 +35,12 @@ const PictureProfil = ( props ) =>{
     return (
         <PicContainer 
             picture={isPicture}
-            user={user}
+            pictureUrl={props.pictureUrl}
             size={props.size}
             marginRight={props.marginRight}
         >
             {!isPicture && 
-            <Letter>{user.username[0].toLowerCase()}</Letter>}
+            <Letter>{props.username[0].toLowerCase()}</Letter>}
         </PicContainer>
     )
 }

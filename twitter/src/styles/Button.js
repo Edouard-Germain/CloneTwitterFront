@@ -97,7 +97,8 @@ const ButtonClose = styled.button`
     cursor: pointer;
     height: 40px;
     width: 40px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 16px;
     padding-top: 2px;
     text-align: center;
     color: rgb(0, 0, 0);

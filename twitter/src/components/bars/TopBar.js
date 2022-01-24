@@ -4,7 +4,7 @@ const Container = styled.div`
     background-color: rgb(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     position: "sticky";
-    padding: 15px 16px 0 16px;
+    padding: 15px 16px 10px 16px;
 `
 
 const TitlePage = styled.h5`

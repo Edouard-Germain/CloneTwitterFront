@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router';
 
-import TweetCard from "../components/TweetCard";
+import TweetCard from "../components/cards/TweetCard";
 
 const Tweet = () => {
     const [ comments, setComments ] = useState([])

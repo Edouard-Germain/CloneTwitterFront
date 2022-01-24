@@ -1,18 +1,20 @@
 import {Link} from 'react-router-dom'
 import {useContext} from 'react';
-import {UserContext} from '../context/context';
+import {UserContext} from '../../context/context';
 import MediaQuery from 'react-responsive'
+
 import styled from "styled-components";
 import { 
     ButtonBlueLarge,
-} from "../styles/Button";
+} from "../../styles/Button";
 
-import ButtonProfile from "./buttons/ButtonProfile";
+import ButtonProfile from "../buttons/ButtonProfile";
+import ModalLogout from "../../components/modals/ModalLogout";
+import ModalTweet from "../../components/modals/ModalTweet";
 
 import {BiHomeSmile} from 'react-icons/bi'
 import {FiUser} from 'react-icons/fi'
 import {FiUsers} from 'react-icons/fi'
-import {IoIosLogOut} from 'react-icons/io'
 import {BsTwitter} from "react-icons/bs";
 
 
@@ -54,8 +56,14 @@ const Text = styled.div`
 `
 
 const SideNav = () => {
-    const {user} = useContext(UserContext)
-    const isConnected = user ==! null
+    const { 
+        user,
+        showLogout,
+        handleCloseLogout,
+        showTweet,
+        handleShowTweet,
+        handleCloseTweet,
+    } = useContext(UserContext)
 
     return (
         <>
@@ -115,29 +123,32 @@ const SideNav = () => {
                         style={{textDecoration:"none"}} 
                         to={'/login'}
                     >
-                        <ListItem>
-                            <IoIosLogOut
-                                style = {{
-                                    fontSize : "1.8em",
-                                    color: 'black',
-                                }}
-                            />
-                            <Text>Logout</Text>
-                        </ListItem> 
                     </Link>
                 </List >
 
                 <MediaQuery minWidth={1224}>
                     <div className="mt-4">
-                        <ButtonBlueLarge>Tweet</ButtonBlueLarge>
+                        <ButtonBlueLarge
+                            type="button"
+                            onClick={handleShowTweet}
+                        >
+                            Tweet
+                        </ButtonBlueLarge>
                     </div>
                 </MediaQuery>
+                <ModalTweet
+                    show={showTweet}
+                    handleClose={handleCloseTweet}
+                />
             
             </div>
             <MediaQuery minWidth={1224}>
                 <ButtonProfile/>
             </MediaQuery>
-            
+            <ModalLogout
+                show={showLogout}
+                handleClose={handleCloseLogout}
+            />
         </Container>
         </>  
     )

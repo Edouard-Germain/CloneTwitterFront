@@ -29,11 +29,11 @@ const H3Text = styled.h3`
 `
 const ConditionText = styled.p`
     font-size: 1.5vh;
+    margin: 1em 1em;
 `
 const Form = styled.form`
     width: 300px;
 `
-
 
 const Login = () =>{
     const [showSignup, setShowSignup] = useState(false);
@@ -67,8 +67,6 @@ const Login = () =>{
                         <Form>
                             <ButtonBlue
                                 type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#loginModal"
                                 onClick={handleShowSignup}
                             >
                                 <span>S'inscrire</span>
@@ -89,7 +87,7 @@ const Login = () =>{
                                 <ModalLogin
                                     show={showLogin}
                                     handleClose={handleCloseLogin}
-                                />
+                                /> 
                             </div>                     
                         </Form>
                     </div>
