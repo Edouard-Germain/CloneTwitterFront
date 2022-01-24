@@ -31,6 +31,8 @@ const PictureProfil = ( props ) =>{
             setIsPicture(true)
         }
     }, [])
+    
+    console.log("props", props)
 
     return (
         <PicContainer 

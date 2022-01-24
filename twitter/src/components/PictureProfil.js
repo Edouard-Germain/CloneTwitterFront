@@ -33,6 +33,7 @@ const PictureProfil = ( props ) =>{
             setIsPicture(true)
         }
     }, [])
+    console.log("username", props)
 
     return (
         <PicContainer 

@@ -48,7 +48,7 @@ const FormLogin = () => {
         })
   
         const user = await response.json()
-        console.log(user)
+        // console.log(user)
     
         if (user) {
           setUser(user)
@@ -59,7 +59,7 @@ const FormLogin = () => {
           setIsValid(false) 
         }
     }
-     console.log(formik.errors)
+    //  console.log(formik.errors)
 
     return (
         <div>

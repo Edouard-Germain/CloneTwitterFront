@@ -33,23 +33,21 @@ const Input = styled.input`
     font-size: 20px;
   }
 `
-const InputTweet = () => {
+const InputComment = (props) => {
+  const {comments,setComments} = useContext(UserContext)
+  const tweetid = props.props
   const { 
     user, 
     showTweet,
     setShowTweet,
-    getFeed,
+    getComments,
   } = useContext(UserContext)
-
   const formik = useFormik({
       initialValues: {
         content: "",
         user: user._id,
+        tweet : tweetid
       },
-      validationSchema: Yup.object().shape({
-        content: Yup.string()
-              .max(280, "trop long")
-            }),
       onSubmit: values => {
         postTweet(values)
         formik.resetForm()
@@ -61,7 +59,7 @@ const InputTweet = () => {
   })
 
   const postTweet = async (values) => {
-    const response = await fetch('http://localhost:5000/tweets', {
+    const response = await fetch('http://localhost:5000/comments', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -71,9 +69,9 @@ const InputTweet = () => {
     })
 
     const data = await response.json()
-  
     if (data) {
-      getFeed()
+      console.log('data', data)
+      getComments(tweetid)
     } else {
       alert(response.statusText)
     }
@@ -101,7 +99,7 @@ const InputTweet = () => {
             type="text" 
             name='content'
             id= "tweetInput"
-            placeholder="What's happening ?"
+            placeholder="Tweetez votre réponse"
             value={formik.values.content}
             onChange={formik.handleChange}
           />
@@ -113,7 +111,7 @@ const InputTweet = () => {
                 className="my-3" 
                 type='submit'
               >
-                  Tweet
+                  répondre
               </ButtonBlue>
             </div>
           </div>
@@ -121,4 +119,4 @@ const InputTweet = () => {
     </Container>
   )
 }
-export default InputTweet
+export default InputComment

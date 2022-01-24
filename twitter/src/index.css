@@ -1,20 +1,19 @@
-@font-face {
+/* @font-face {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: bold;
   src: url("../src/fonts/Helvetica\ Neue\ Medium\ Extended.otf");
   src: url("../src/fonts/Helvetica\ Neue\ Medium\ Extended.ttf");
-}
+} */
 
 body html {
   margin: 0;
   height: 100%;
   background-color: rgb(255, 255, 255);
-  font-family: 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;  
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

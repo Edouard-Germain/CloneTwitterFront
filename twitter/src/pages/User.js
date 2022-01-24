@@ -6,7 +6,8 @@ import styled from "styled-components";
 import Logout from "../components/logout"
 import SideNav from "../components/bars/SideNav";
 import InputTweet from "../components/inputs/InputTweet";
-import TweetCard from "../components/cards/TweetCard";
+import UsertweetsCard from "../components/cards/UsertweetsCard";
+import RightBar  from "../components/bars/RightBar";
 
 const CentralContainer = styled.div`
     border: 1px solid rgb(239, 243, 244);
@@ -17,16 +18,23 @@ const User = () =>{
     const { user, feed, setFeed, page, setPage } = useContext(UserContext)
     const [ userTweet, setUserTweet ] = useState(null)
 
+    const identity = user._id
+
     useEffect(() => {
-        fetch(`http://localhost:5000/feed/${user._id}`)
+        fetch(`http://localhost:5000/users/${identity}`)
         .then(response => response.json())
         .then(data => setUserTweet(data))
       }, [])
-    if (userTweet=== null){
+
+    if (userTweet== null){
         return null
     }
-    
+    const Ufeed = userTweet.tweets
+    console.log("U", Ufeed)
+
+
     return (
+
     
         <div className="container-fluid">
             <div className="row">
@@ -40,12 +48,13 @@ const User = () =>{
                     <div className="row">
                         <div className="col-8 p-0">
                             <InputTweet/>
-                            {userTweet.map((tweet)=>
-                                <TweetCard props = {tweet}></TweetCard>
+                            {Ufeed.map((tweet)=>
+                                <UsertweetsCard props={tweet}></UsertweetsCard> 
                             )}
                         </div>
-                        <div className="col-4 bg-primary">
-                        </div>
+                        <div className="col-5">
+                            <RightBar/>
+                        </div>  
                     </div>
                 </CentralContainer>
             </div>

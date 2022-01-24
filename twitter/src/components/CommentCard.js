@@ -21,7 +21,7 @@ const TweetContainer = styled.div`
     `
     
 const PicContainer = styled.div`
-    background-color : blue;
+    background-color : rgb(29, 155, 240);
     border-radius : 50px;
     height : 60px;
     width : 60px;
@@ -43,6 +43,11 @@ const TrashSpan = styled.span`
 
 const TextContainer = styled.div`
 `
+const Letter = styled.h3`
+    text-align: center;
+    color: white;
+    margin: 0;
+`
 
 
 const TweetCard = (props) =>{
@@ -52,7 +57,7 @@ const TweetCard = (props) =>{
 
     const HandleDelete   = async () =>{
         try {
-           await fetch(`http://localhost:5000/tweets/${id}`,{
+           await fetch(`http://localhost:5000/comments/${id}`,{
                 method : 'delete',
             })
             .then (response=>response)
@@ -63,13 +68,14 @@ const TweetCard = (props) =>{
             console.log(err)
         }
     }
-
+    // console.log("props comment",props)
     return (
             <TweetContainer>
-                    <PicContainer>           
+                    <PicContainer>  
+                        <Letter>U</Letter>         
                     </PicContainer>
                     <TextContainer>
-                        <UserText> {props.props.user.username} Zgeg
+                        <UserText> {props.props.user.username} 
                             <UserAt>@{props.props.user.username} {time}</UserAt>
                             <TrashSpan onClick = {HandleDelete}>
                                 <BiTrash/>
