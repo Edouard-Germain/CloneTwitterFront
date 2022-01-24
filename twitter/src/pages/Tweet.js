@@ -3,10 +3,10 @@ import { useParams } from 'react-router';
 import styled from "styled-components";
 
 import EpiTweet from "../components/EpiTweet";
-import TopBar from "../components/TopBar"
-import SideNav from "../components/SideNav";
-import CardFollowings  from "../components/CardFollowings";
-import ResearchBar  from "../components/ResearchBar";
+import TopBar from "../components/bars/TopBar"
+import SideNav from "../components/bars/SideNav";
+import FollowsCard  from "../components/cards/FollowsCard";
+import ResearchBar  from "../components/bars/ResearchBar";
 import CommentCard from "../components/CommentCard"
 
 
@@ -68,7 +68,7 @@ const Tweet = () => {
                 <div className="mx-3">
                     <ResearchBar/>
                     <div className="mt-4">
-                        <CardFollowings/>
+                        <FollowsCard/>
                     </div>  
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import FollowsCard  from "../../components/cards/FollowsCard";
-import ResearchBar  from "../inputs/ResearchBar";
+import ResearchBar  from "../bars/ResearchBar";
 
 import styled from "styled-components";
 
