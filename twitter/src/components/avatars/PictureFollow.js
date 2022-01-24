@@ -18,7 +18,7 @@ const PicContainer = styled.div`
 const Letter = styled.h3`
     text-align: center;
     color: white;
-    margin: 0;
+    margin-bottom: 5px;
 `
 
 const PictureFollow = ( props ) =>{

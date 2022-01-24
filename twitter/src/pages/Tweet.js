@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react"
+import { UserContext } from "../context/context";
 import { useParams } from 'react-router';
 import styled from "styled-components";
 
@@ -7,22 +8,18 @@ import TopBar from "../components/bars/TopBar"
 import SideNav from "../components/bars/SideNav";
 import FollowsCard  from "../components/cards/FollowsCard";
 import ResearchBar  from "../components/bars/ResearchBar";
-import CommentCard from "../components/CommentCard"
+import CommentCard from "../components/cards/CommentCard"
 import InputComment from "../components/inputs/InputComment"
-import { UserContext } from "../context/context";
-
 
 const CentralContainer = styled.div`
     border-left: 1px solid rgb(239, 243, 244);
     border-right: 1px solid rgb(239, 243, 244);
     border-bottom: none;  
 `
-
 const TweetsContainer = styled.div`
     height: calc(100vh - 50px);
     overflow-y: scroll;
 `
-
 
 const Tweet = () => {
     const {id} = useParams()
@@ -32,13 +29,12 @@ const Tweet = () => {
         fetch(`http://localhost:5000/tweets/${id}`)
         .then(response => response.json())
         .then(data => setComments(data))
-      }, [])
-    //   console.log('id',id)
-
+    }, [])
 
     if (comments == null ){
         return null
     }
+
     return (
         <div className="container-fluid m-0">
         <div className="d-flex">

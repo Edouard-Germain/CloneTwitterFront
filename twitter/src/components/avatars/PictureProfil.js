@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import { UserContext } from '../context/context';
+import { UserContext } from '../../context/context';
 import styled from "styled-components";
 
 const PicContainer = styled.div`
-    ${props => !props.picture && "background-color: rgb(29, 155, 240)"}; 
+    background-color: rgb(29, 155, 240); 
     background-image: url('${props => props.user.pictureUrl}');
     background-position: bottom;
     background-size: cover;
@@ -15,11 +15,10 @@ const PicContainer = styled.div`
     align-items: center;
     justify-content: center;
 `
-
 const Letter = styled.h3`
     text-align: center;
     color: white;
-    margin: 0;
+    margin-bottom: 5px;
 `
 
 const PictureProfil = ( props ) =>{
@@ -34,7 +33,7 @@ const PictureProfil = ( props ) =>{
         }
     }, [])
     console.log("username Picture", user)
-    console.log("username", props)
+    console.log("props", props)
 
     return (
         <PicContainer 

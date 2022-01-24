@@ -7,7 +7,7 @@ import {
 } from "../../styles/Button";
 
 // import { BiDotsHorizontalRounded } from "react-icons/bi"
-import PictureProfil from "../../components/PictureProfil";
+import PictureProfil from "../avatars/PictureProfil";
 
 const Container = styled.div`
     display: flex;

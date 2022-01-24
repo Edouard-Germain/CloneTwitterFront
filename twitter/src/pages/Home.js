@@ -14,7 +14,7 @@ const Home = () =>{
     if (user === null) {
         return <h1>Login</h1>
     } 
-    // console.log('user',user)
+    
     return (    
         <div className="mx-5">
             <div className="d-flex">
@@ -23,7 +23,7 @@ const Home = () =>{
                 </div>
                 <div className="col-lg-11 col-xl-9 d-flex justify-content-between">
                     <div className="col-7">
-                        <CentralHome />
+                        <CentralHome/>
                     </div>
                     <div className="col-5">
                         <RightBar/>

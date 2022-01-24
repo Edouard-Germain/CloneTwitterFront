@@ -3,7 +3,7 @@ import { UserContext } from '../../context/context';
 
 import styled from "styled-components";
 
-import PictureProfil from "../PictureProfil";
+import PictureProfil from "../avatars/PictureProfil";
 import Form from "react-bootstrap/Form";
 
 import { useFormik } from 'formik'

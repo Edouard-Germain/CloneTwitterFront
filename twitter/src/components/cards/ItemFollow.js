@@ -3,7 +3,7 @@ import { UserContext } from '../../context/context';
 
 import styled from "styled-components"
 
-import PictureFollow from "../PictureFollow";
+import PictureFollow from "../avatars/PictureFollow";
 
 import { 
     ButtonBlackSmall,

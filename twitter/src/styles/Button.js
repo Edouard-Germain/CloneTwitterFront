@@ -54,6 +54,25 @@ const ButtonWhite = styled.button`
     }
 `
 
+const ButtonWhiteSmall = styled.button`
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(207, 217, 222);
+    cursor: pointer;
+    height: 30px;
+    width: 100%;
+    border-radius: 90px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 14px;
+
+    :hover {
+        transition-property: background-color, box-shadow;
+        background-color: rgb(29, 155, 240, 0.1);
+        transition-duration: 0.2s
+    }
+`
+
 const ButtonBlack = styled.button`
     background-color: rgb(0, 0, 0);
     border: none;
@@ -117,6 +136,7 @@ export {
     ButtonBlue,
     ButtonBlueLarge,
     ButtonWhite,
+    ButtonWhiteSmall,
     ButtonBlack,
     ButtonBlackSmall,
     ButtonClose,

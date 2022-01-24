@@ -8,8 +8,8 @@ import {AiOutlineRetweet} from "react-icons/ai"
 import {FaRegComment} from "react-icons/fa"
 import moment from "moment"
 
-import PictureProfil from "../PictureProfil"
-import PictureFollow from "../PictureFollow"
+import PictureProfil from "../avatars/PictureProfil"
+import PictureFollow from "../avatars/PictureFollow"
 
 const TweetContainer = styled.div`
     display : flex;
