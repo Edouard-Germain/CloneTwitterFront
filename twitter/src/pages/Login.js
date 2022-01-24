@@ -24,7 +24,6 @@ const H1Text = styled.h1`
 `
 const H3Text = styled.h3`
     font-size: 4vh;
-    font-weight: bold;
     margin: 1em 0em;
 `
 const ConditionText = styled.p`
